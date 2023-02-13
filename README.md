@@ -10,7 +10,7 @@
 <dependency>
 	<groupId>com.github.chenyuxin</groupId>
 	<artifactId>combo-dao</artifactId>
-	<version>3.0</version>
+	<version>3.0.0</version>
 </dependency>
 
 ```
@@ -48,7 +48,7 @@
 <dependency>
 	<groupId>com.github.chenyuxin</groupId>
 	<artifactId>combo-dao</artifactId>
-	<version>3.0</version>
+	<version>3.0.0</version>
 </dependency>
 
 ```
