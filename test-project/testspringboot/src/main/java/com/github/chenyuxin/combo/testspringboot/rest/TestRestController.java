@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,11 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.chenyuxin.combo.base.type.database.TableType;
 import com.github.chenyuxin.combo.dao.intf.ComboDao;
-import com.github.chenyuxin.combo.testspringboot.testdto.EmpUser;
-import com.github.chenyuxin.combo.validator.ValidUtil;
 
 
 @RestController
+@Validated
 public class TestRestController {
 	
 	@Autowired ComboDao comboDao;
@@ -37,29 +35,6 @@ public class TestRestController {
 		return a.toString() + date + aString;
 
 	}
-	
-	@RequestMapping("info2")
-	public String info2(@Validated @RequestBody EmpUser empUser,BindingResult result) {
-		
-		if(	result.hasErrors() ) {
-			result.getFieldErrors().forEach(e -> {
-				System.out.println(e.getCode());
-				System.out.println(e.getField());
-				System.out.println(e.getDefaultMessage());
-			});
-			
-			return result.getAllErrors().toString();
-		}
-		System.out.println(empUser);
-		return empUser.getName();
-	}
-	
-	@RequestMapping("info3")
-	public String info3(@RequestBody EmpUser empUser) {
-		ValidUtil.validate(empUser);
-		return empUser.getName();
-	}
-	
 	
 //	@RequestMapping("/testR3")
 //	public String test3() {
