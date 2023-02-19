@@ -37,8 +37,8 @@ public class BaseUtil {
 	public static <T> T setNull(T obj,T isNotNullValue) {
 		if (null == obj) {
 			obj = isNotNullValue;
-		} else if (obj instanceof CharSequence ) {
-			if ( ((CharSequence) obj).length() == 0 ) {
+		} else if (obj instanceof CharSequence c ) {
+			if ( c.length() == 0 ) {
 				obj = isNotNullValue;
 			}
 		}

@@ -47,9 +47,8 @@ public class DaoSqlReader {
         List<SQLSelectItem> items = null;
         for (SQLStatement stmt : stmtList) {
             // stmt.accept(visitor);
-            if (stmt instanceof SQLSelectStatement) {
-                SQLSelectStatement sstmt = (SQLSelectStatement) stmt;
-                SQLSelect sqlselect = sstmt.getSelect();
+            if (stmt instanceof SQLSelectStatement s) {
+                SQLSelect sqlselect = s.getSelect();
                 SQLSelectQueryBlock query = (SQLSelectQueryBlock) sqlselect.getQuery();
                 items = query.getSelectList();
                 //SQLTableSource tableSource = query.getFrom();
@@ -60,9 +59,8 @@ public class DaoSqlReader {
             if (StringUtils.isEmpty(s.getAlias())) {//判断是否有别名
             	SQLExpr expr = s.getExpr();
             	column = expr.toString();
-            	if (expr instanceof SQLPropertyExpr) {//一般属性
-            		SQLPropertyExpr spExpr = (SQLPropertyExpr)expr;
-            		column = spExpr.getName();
+            	if (expr instanceof SQLPropertyExpr e) {//一般属性
+            		column = e.getName();
             	} else {//复杂sql组成的字段列
             		throw new RuntimeException("获取sql语句中查询字段getSelectColumns:复杂sql组成的字段列必须使用别名");
             	}

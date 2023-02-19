@@ -34,8 +34,8 @@ public class JoinOptions {
 		this.currentTable = currentTable;
 		this.joinType = joinType;
 		this.currentDaoOptions = new DaoOptions(daoOptions);
-		if ( currentTable instanceof Class ) {
-			this.currentSql = CommonSql.selectSql((Class<?>) currentTable, this.currentDaoOptions.getParamMap(), this.currentDaoOptions.getQueryConditions());
+		if ( currentTable instanceof Class<?> table ) {
+			this.currentSql = CommonSql.selectSql(table, this.currentDaoOptions.getParamMap(), this.currentDaoOptions.getQueryConditions());
 		} else if ( currentTable instanceof List ) {
 			//TODO 
 		}	
@@ -51,8 +51,8 @@ public class JoinOptions {
 		this.currentTable = currentTable;
 		this.joinType = null;
 		this.currentDaoOptions = new DaoOptions(daoOptions);
-		if ( currentTable instanceof Class ) {
-			this.currentSql = CommonSql.selectSql((Class<?>) currentTable, this.currentDaoOptions.getParamMap(), this.currentDaoOptions.getQueryConditions());
+		if ( currentTable instanceof Class<?> table ) {
+			this.currentSql = CommonSql.selectSql(table, this.currentDaoOptions.getParamMap(), this.currentDaoOptions.getQueryConditions());
 		} else if ( currentTable instanceof List ) {
 			//TODO 
 		}

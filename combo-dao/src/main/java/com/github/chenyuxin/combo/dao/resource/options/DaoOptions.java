@@ -122,26 +122,25 @@ public class DaoOptions {
 		String dataSourceName = null;
 		for (int i=0;i<daoOptions.length;i++) {
 			Object object = daoOptions[i];
-			if (object instanceof String ) {
-				dataSourceName = object.toString();
-			} else if ( object instanceof Map<?, ?> ) {
+			if (object instanceof String str) {
+				dataSourceName = str;
+			} else if ( object instanceof Map ) {
 				paramMap.putAll( (Map<String, Object>)object );
-			} else if ( object instanceof List<?> ) {
+			} else if ( object instanceof List ) {
 				queryConditions.addAll((List<QueryCondition>)object);
-			} else if ( object instanceof QueryCondition ) {
-				queryConditions.add((QueryCondition)object);
-			} else if ( object instanceof QueryCondition[]) {
-				QueryCondition[] queryConditionsA = (QueryCondition[])object;
+			} else if ( object instanceof QueryCondition queryCondition) {
+				queryConditions.add(queryCondition);
+			} else if ( object instanceof QueryCondition[] queryConditionsA) {
 				for (int j=0;j<queryConditionsA.length;j++) {
 					queryConditions.add(queryConditionsA[j]);
 				}
-			} else if ( object instanceof TableType) {
-				this.tableType = (TableType) object;
+			} else if ( object instanceof TableType table) {
+				this.tableType = table;
 			} else if ( object instanceof DaoEnumOptions) {
 				this.runtimeException = true;
-			} else if ( object instanceof Object[]) {
-				if (((Object[]) object).length>0) {
-					dataSourceName = putDaoOptions(queryConditions, paramMap, (Object[])object);
+			} else if ( object instanceof Object[] objs) {
+				if (objs.length>0) {
+					dataSourceName = putDaoOptions(queryConditions, paramMap, objs);
 				}
 			}
 		}

@@ -1087,8 +1087,8 @@ public class CommonSql {
 		int joinOrderCode = joinOptions.getJoinOrder();//本表别名
 		int panrenOrderCode = null==parentJoinOptions?-1:parentJoinOptions.getJoinOrder();//连接前表别名
 		Object currentTable = joinOptions.getCurrentTable();
-		if ( currentTable instanceof Class ) {
-			List<String> colList = CommonSql.getConvertColNames((Class<?>)currentTable, "totalselect");
+		if ( currentTable instanceof Class<?> table ) {
+			List<String> colList = CommonSql.getConvertColNames(table, "totalselect");
 			//totalSelectColSql.append(StringUtils.join(colList,','));
 			for(int i=0;i<colList.size();i++){
 				if (i==0 && null == joinOptions.getJoinType()) {
