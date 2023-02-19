@@ -3,22 +3,24 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenyuxin</groupId>
 	<artifactId>combospring</artifactId>
-	<version>3.0.0</version>
+	<version>3.0.2</version>
 	<packaging>pom</packaging>
 	<name>combospring</name>
 	<url>http://github.com/chenyuxin/combospring</url>
 	<modules>
 		<module>combo-base</module>
 		<module>combo-dao</module>
+		<module>combo-validator</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
-		<spring-boot.version>3.0.0</spring-boot.version>
+		<spring-boot.version>3.0.2</spring-boot.version>
+		<!-- org.ow2.asm 
 		<asm.version>9.4</asm.version>
-		<!-- org.ow2.asm -->
+		-->
 		<druid.version>1.2.15</druid.version>
-		<fastjson.version>2.0.21</fastjson.version>
+		<fastjson.version>2.0.23</fastjson.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -31,11 +33,13 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<!-- 
 			<dependency>
 				<groupId>org.ow2.asm</groupId>
 				<artifactId>asm</artifactId>
 				<version>${asm.version}</version>
 			</dependency>
+			-->
 			
 			
 			<dependency>

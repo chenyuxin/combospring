@@ -22,6 +22,7 @@ public class TestController {
 	public String test1(HttpServletRequest request) {
 		System.out.println("ShowSql:" + daoConfResource.isShowSql());
 		request.setAttribute("ShowSql", "ShowSql:" + daoConfResource.isShowSql());
+		
 		return "index";
 	}
 	

@@ -6,7 +6,7 @@
   <parent>
 	<groupId>org.springframework.boot</groupId> 
     <artifactId>spring-boot-starter-parent</artifactId> 
-    <version>3.0.0</version> 
+    <version>3.0.2</version> 
   </parent>
 	
   <groupId>com.github.chenyuxin.combo.testspringboot</groupId>		
@@ -23,10 +23,10 @@
     <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>17</java.version>
-    <spring-boot.version>3.0.0</spring-boot.version>
+    <spring-boot.version>3.0.2</spring-boot.version>
     
     <druid.version>1.2.15</druid.version>
-	<fastjson.version>2.0.21</fastjson.version>
+	<fastjson.version>2.0.23</fastjson.version>
   </properties>
   
   <dependencies>
@@ -55,37 +55,17 @@
 		<artifactId>tomcat-embed-jasper</artifactId>
 	</dependency>
 	
-	
-	
-	
 	<dependency>
 		<groupId>com.github.chenyuxin</groupId>
 		<artifactId>combo-dao</artifactId>
 		<version>${spring-boot.version}</version>
 	</dependency>
 	
+	<!-- 用于验证 -->
 	<dependency>
-		<groupId>com.alibaba</groupId>
-		<artifactId>druid-spring-boot-starter</artifactId>
-		<version>${druid.version}</version>
-		<exclusions>
-			<exclusion>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-			</exclusion>
-		</exclusions>
-	</dependency>
-	<dependency>
-	    <groupId>com.oracle.database.jdbc</groupId>
-	    <artifactId>ojdbc8</artifactId>
-	</dependency>
-	<dependency>
-    	<groupId>mysql</groupId>
-	    <artifactId>mysql-connector-java</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>org.postgresql</groupId>
-		<artifactId>postgresql</artifactId>
+		<groupId>com.github.chenyuxin</groupId>
+		<artifactId>combo-validator</artifactId>
+		<version>${spring-boot.version}</version>
 	</dependency>
 	
 	
