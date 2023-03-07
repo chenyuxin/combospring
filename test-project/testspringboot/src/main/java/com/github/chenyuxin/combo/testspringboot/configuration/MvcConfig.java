@@ -25,7 +25,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.alibaba.fastjson2.JSONWriter;
 import com.alibaba.fastjson2.JSONReader.Feature;
 import com.alibaba.fastjson2.support.config.FastJsonConfig;
-import com.alibaba.fastjson2.support.spring.http.converter.FastJsonHttpMessageConverter;
+import com.alibaba.fastjson2.support.spring6.http.converter.FastJsonHttpMessageConverter;
 import com.github.chenyuxin.combo.base.util.CharsetUtil;
 
 
