@@ -9,9 +9,11 @@
 	<url>http://github.com/chenyuxin/combospring</url>
 	<modules>
 		<module>combo-base</module>
+		<module>combo-util</module>
 		<module>combo-dao</module>
 		<module>combo-validator</module>
 		<module>combo-aop</module>
+		<module>combo-redis</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

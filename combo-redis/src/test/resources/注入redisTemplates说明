@@ -1,0 +1,13 @@
+springboot自动装配redis
+spring框架在WebApplicationInitializer实现类配置：
+AnnotationConfigWebApplicationContext ac = new AnnotationConfigWebApplicationContext();
+ac.register(RedisAutoConfiguration.class);//注册spring的配置类（替代传统项目中xml的configuration）
+
+
+
+引用方式：
+@Resource RedisTemplate<?, ?> redisTemplate;
+
+@Autowired StringRedisTemplate stringRedisTemplate;
+
+@Autowired CommonRedisTemplate commonRedisTemplate;
