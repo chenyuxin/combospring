@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.github.chenyuxin</groupId>
-	<artifactId>combospring</artifactId>
-	<version>3.0.4</version>
+	<groupId>com.github.chenyuxin.commonframework</groupId>
+	<artifactId>commonframework</artifactId>
+	<version>3.1.2</version>
 	<packaging>pom</packaging>
-	<name>combospring</name>
-	<url>http://github.com/chenyuxin/combospring</url>
+	<name>commonframework</name>
+	<url>https://github.com/chenyuxin/combospring</url>
 	<modules>
-		<module>combo-base</module>
-		<module>combo-util</module>
-		<module>combo-dao</module>
-		<module>combo-validator</module>
-		<module>combo-aop</module>
-		<module>combo-redis</module>
+		<module>commonframework-aop</module>
+		<module>commonframework-base</module>
+		<module>commonframework-chinese</module>
+		<module>commonframework-cipher</module>
+		<module>commonframework-dao</module>
+		<module>commonframework-mvc</module>
+		<module>commonframework-redis</module>
+		<module>commonframework-util</module>
+		<module>commonframework-validator</module>
+		<module>commonframework-xml</module>
+		<module>commonframework-webservice</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
-		<spring-boot.version>3.0.4</spring-boot.version>
-		<!-- org.ow2.asm 
-		<asm.version>9.4</asm.version>
-		-->
-		<druid.version>1.2.16</druid.version>
-		<fastjson.version>2.0.24</fastjson.version>
+		<spring-boot.version>3.1.2</spring-boot.version>
+		
+		<commons-text.version>1.10.0</commons-text.version>
+		<commons-collections4.version>4.4</commons-collections4.version>
+		<druid.version>1.2.18</druid.version>
+		<fastjson.version>2.0.39</fastjson.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -36,18 +41,60 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- 
+			
 			<dependency>
-				<groupId>org.ow2.asm</groupId>
-				<artifactId>asm</artifactId>
-				<version>${asm.version}</version>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-base</artifactId>
+				<version>${spring-boot.version}</version>
 			</dependency>
-			-->
-			
-			
 			<dependency>
-				<groupId>com.github.chenyuxin</groupId>
-				<artifactId>combo-base</artifactId>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-util</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-dao</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-mvc</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-validator</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-aop</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-redis</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-chinese</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-xml</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-cipher</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-webservice</artifactId>
 				<version>${spring-boot.version}</version>
 			</dependency>
 		</dependencies>
@@ -57,6 +104,31 @@
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>	
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+				
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-text</artifactId>
+		    <version>${commons-text.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-collections4</artifactId>
+		    <version>${commons-collections4.version}</version>
 		</dependency>
 		
 		<dependency>
@@ -70,16 +142,11 @@
 		    <version>${fastjson.version}</version>
 		</dependency>
 
+		<dependency>
+		    <groupId>jakarta.servlet</groupId>
+		    <artifactId>jakarta.servlet-api</artifactId>
+		</dependency>
 		<!-- 
-			<dependency>
-				<groupId>com.alibaba.fastjson2</groupId>
-				<artifactId>fastjson2-extension</artifactId>
-				<version>${fastjson.version}</version>
-			</dependency>
-			<dependency>
-			    <groupId>jakarta.servlet</groupId>
-			    <artifactId>jakarta.servlet-api</artifactId>
-			</dependency>
 			
 			<dependency>
 			    <groupId>com.google.code.findbugs</groupId>
@@ -87,14 +154,14 @@
 			    <version>3.0.2</version>
 			</dependency>
 		
-	-->
+		-->
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.10.1</version>
+				<version>3.11.0</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -106,7 +173,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<!-- 保留doc注释 -->
-				<version>3.2.1</version>
+				<version>3.3.0</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -119,7 +186,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.3.2</version>
+				<version>3.4.0</version>
 			</plugin>
 		</plugins>
 	</build>

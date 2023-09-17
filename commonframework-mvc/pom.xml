@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>commonframework</artifactId>
+		<groupId>com.github.chenyuxin.commonframework</groupId>
+		<version>3.1.2</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>commonframework-mvc</artifactId>
+	<packaging>jar</packaging>
+	<name>commonframework-mvc</name>
+	<url>https://github.com/chenyuxin/combospring</url>
+	<description>commonframework库的mvc模块</description>
+	<dependencies>
+		
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.chenyuxin.commonframework</groupId>
+			<artifactId>commonframework-base</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.chenyuxin.commonframework</groupId>
+			<artifactId>commonframework-validator</artifactId>
+		</dependency>
+		
+        <dependency>
+		    <groupId>com.github.xiaoymin</groupId>
+		    <artifactId>knife4j-openapi3-ui</artifactId>
+		    <version>4.2.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.github.xiaoymin</groupId>
+		    <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+		    <version>4.2.0</version>
+		</dependency>
+		
+	</dependencies>
+</project>

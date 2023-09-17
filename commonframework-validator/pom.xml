@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>commonframework</artifactId>
+		<groupId>com.github.chenyuxin.commonframework</groupId>
+		<version>3.1.2</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>commonframework-validator</artifactId>
+	<packaging>jar</packaging>
+	<name>commonframework-validator</name>
+	<url>https://github.com/chenyuxin/combospring</url>
+	<description>commonframework库的validator验证模块,用于验证属性值和对象属性值。</description>
+	<dependencies>
+		<dependency>
+		    <groupId>jakarta.validation</groupId>
+		    <artifactId>jakarta.validation-api</artifactId>
+		</dependency>
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-validation</artifactId>
+	    </dependency>
+		
+	</dependencies>
+</project>
