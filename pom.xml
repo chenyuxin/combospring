@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenyuxin.commonframework</groupId>
 	<artifactId>commonframework</artifactId>
-	<version>3.1.2</version>
+	<version>3.1.3</version>
 	<packaging>pom</packaging>
 	<name>commonframework</name>
 	<url>https://github.com/chenyuxin/combospring</url>
@@ -22,8 +22,8 @@
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>17</java.version>
-		<spring-boot.version>3.1.2</spring-boot.version>
+		<java.version>21</java.version>
+		<spring-boot.version>3.1.3</spring-boot.version>
 		
 		<commons-text.version>1.10.0</commons-text.version>
 		<commons-collections4.version>4.4</commons-collections4.version>

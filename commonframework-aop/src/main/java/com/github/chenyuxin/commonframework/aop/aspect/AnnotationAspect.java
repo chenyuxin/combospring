@@ -20,7 +20,7 @@ public class AnnotationAspect {
 	/**
 	 * 切点 通过@CommonAop注解的方法
 	 */
-	@Pointcut("@annotation(com.github.chenyuxin.commonframework.aop.ComboAop)")
+	@Pointcut("@annotation(com.github.chenyuxin.commonframework.aop.CommonAop)")
 	private void pointCutComboAop(){}
 	
 	@SuppressWarnings("unchecked")
