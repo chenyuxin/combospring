@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> validationException(ValidationException e){
     	log.warn("GlobalExceptionHandler捕获异常ValidationException：", e);
     	Map<String, Object> responseMsg = new HashMap<String, Object>();
-		responseMsg.put("status", HttpStatus.NOT_ACCEPTABLE.value());
+		responseMsg.put("status", HttpStatus.UNPROCESSABLE_ENTITY.value());
 		responseMsg.put("message", e.getMessage());
         return ResponseEntity.badRequest().body(responseMsg);
     }

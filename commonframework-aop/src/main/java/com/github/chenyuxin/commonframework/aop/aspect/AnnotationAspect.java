@@ -21,31 +21,31 @@ public class AnnotationAspect {
 	 * 切点 通过@CommonAop注解的方法
 	 */
 	@Pointcut("@annotation(com.github.chenyuxin.commonframework.aop.CommonAop)")
-	private void pointCutComboAop(){}
+	private void pointCutCommonAop(){}
 	
 	@SuppressWarnings("unchecked")
 	@Around("@annotation(commonAop)")
 	public <R> Object process(ProceedingJoinPoint point,CommonAop commonAop) throws Throwable {
-		CommonAopDoSomeThing<R> comboAopDoSomeThing;
+		CommonAopDoSomeThing<R> commonAopDoSomeThing;
 		R beforeResult;
 		try {
-			comboAopDoSomeThing = applicationContext.getBean(commonAop.cuterClass());//TODO 多个ComboAopDoSomeThing的功能添加
-			beforeResult = comboAopDoSomeThing.before(point, commonAop);
+			commonAopDoSomeThing = applicationContext.getBean(commonAop.cuterClass());//TODO 多个CommonAopDoSomeThing的功能添加
+			beforeResult = commonAopDoSomeThing.before(point, commonAop);
 		} catch (Throwable e) {
 			throw e;
 		}
-//    		System.out.println("ComboAop welcome");
-//          System.out.println("ComboAop 切入者："+ comboAop.cuterClass().getSimpleName());
-//          System.out.println("ComboAop 调用类：" + point.getSignature().getDeclaringTypeName());
-//          System.out.println("ComboAop 调用类名" + point.getSignature().getDeclaringType().getSimpleName());
+//    		System.out.println("CommonAop welcome");
+//          System.out.println("CommonAop 切入者："+ commonAop.cuterClass().getSimpleName());
+//          System.out.println("CommonAop 调用类：" + point.getSignature().getDeclaringTypeName());
+//          System.out.println("CommonAop 调用类名" + point.getSignature().getDeclaringType().getSimpleName());
     	try {
 			return point.proceed();//调用目标方法
 		} catch (Throwable e) {
-			comboAopDoSomeThing.throwable(point, commonAop, beforeResult,e);
-			//System.out.println("ComboAop error:" + e.getMessage());
+			commonAopDoSomeThing.throwable(point, commonAop, beforeResult,e);
+			//System.out.println("CommonAop error:" + e.getMessage());
 			throw e;
 		} finally {
-			comboAopDoSomeThing.after(point, commonAop, beforeResult);
+			commonAopDoSomeThing.after(point, commonAop, beforeResult);
 		}
     	
     	

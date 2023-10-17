@@ -110,12 +110,13 @@ public class SpringConfiguration {
     	PathMatchingResourcePatternResolver prpr = new PathMatchingResourcePatternResolver();
     	
     	Resource[] resourcePropertiesFile = prpr.getResources("classpath*:/properties/*.properties");
-    	Resource[] resource = prpr.getResources("classpath*:*.properties");
+    	//Resource[] resource = prpr.getResources("classpath*:*.properties");
     	
 		PropertySourcesPlaceholderConfigurer pspc = new PropertySourcesPlaceholderConfigurer();
 		pspc.setFileEncoding("UTF-8");
 		//pspc.setIgnoreUnresolvablePlaceholders(true);//忽略读取错误配置
-    	pspc.setLocations(ArrayUtils.addAll(resourcePropertiesFile, resource));
+    	//pspc.setLocations(ArrayUtils.addAll(resourcePropertiesFile, resource));
+    	pspc.setLocations(ArrayUtils.addAll(resourcePropertiesFile));
     	return pspc;
     }
 

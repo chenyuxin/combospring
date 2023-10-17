@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenyuxin.commonframework</groupId>
 	<artifactId>commonframework</artifactId>
-	<version>3.1.3</version>
+	<version>3.1.4</version>
 	<packaging>pom</packaging>
 	<name>commonframework</name>
 	<url>https://github.com/chenyuxin/combospring</url>
@@ -19,83 +19,21 @@
 		<module>commonframework-validator</module>
 		<module>commonframework-xml</module>
 		<module>commonframework-webservice</module>
+		<module>commonframework-ftp</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>21</java.version>
-		<spring-boot.version>3.1.3</spring-boot.version>
-		
-		<commons-text.version>1.10.0</commons-text.version>
-		<commons-collections4.version>4.4</commons-collections4.version>
-		<druid.version>1.2.18</druid.version>
-		<fastjson.version>2.0.39</fastjson.version>
+		<spring-boot.version>3.1.4</spring-boot.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<!-- Import dependency management from Spring Boot,not include plugin
-	                management as the parent import style -->
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
+				<groupId>com.github.chenyuxin.commonframework</groupId>
+				<artifactId>commonframework-dependencies</artifactId>
 				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-			
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-base</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-util</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-dao</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-mvc</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-validator</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-aop</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-redis</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-chinese</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-xml</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-cipher</artifactId>
-				<version>${spring-boot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.chenyuxin.commonframework</groupId>
-				<artifactId>commonframework-webservice</artifactId>
-				<version>${spring-boot.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -115,7 +53,6 @@
 			<groupId>org.slf4j</groupId>	
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
-				
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-lang3</artifactId>
@@ -123,23 +60,19 @@
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-text</artifactId>
-		    <version>${commons-text.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-collections4</artifactId>
-		    <version>${commons-collections4.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.alibaba.fastjson2</groupId>
 			<artifactId>fastjson2</artifactId>
-			<version>${fastjson.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>com.alibaba.fastjson2</groupId>
 		    <artifactId>fastjson2-extension-spring6</artifactId>
-		    <version>${fastjson.version}</version>
 		</dependency>
 
 		<dependency>

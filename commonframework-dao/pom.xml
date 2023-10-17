@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>commonframework</artifactId>
 		<groupId>com.github.chenyuxin.commonframework</groupId>
-		<version>3.1.3</version>
+		<version>3.1.4</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>commonframework-dao</artifactId>
@@ -37,7 +37,6 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>${druid.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
@@ -54,35 +53,23 @@
 		    <groupId>com.mysql</groupId>
 		    <artifactId>mysql-connector-j</artifactId>
     	</dependency>
-		<!-- 
-		<dependency>
-	    	<groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
 		
-		
-		
-		
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis-spring</artifactId>
-		    <version>3.0.2</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis</artifactId>
-		    <version>3.5.13</version>
 		</dependency>
 		<!-- 
 		<dependency>
 		    <groupId>com.oracle.ojdbc</groupId>
 		    <artifactId>orai18n</artifactId>
-		    <version>19.3.0.0</version>
 		</dependency>
 		-->
 		

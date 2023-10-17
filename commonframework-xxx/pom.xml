@@ -4,13 +4,13 @@
 	<parent>
 		<artifactId>commonframework</artifactId>
 		<groupId>com.github.chenyuxin.commonframework</groupId>
-		<version>3.1.3</version>
+		<version>3.1.4</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>commonframework-xxx</artifactId>
 	<packaging>jar</packaging>
 	<name>commonframework-xxx</name>
-	<url>https://github.com/chenyuxin/combospring
+	<url>https://github.com/chenyuxin/combospring</url>
 	<description>commonframework库的xxx模块</description>
 	<dependencies>
 		

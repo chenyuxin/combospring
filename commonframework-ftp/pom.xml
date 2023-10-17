@@ -7,20 +7,24 @@
 		<version>3.1.4</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>commonframework-util</artifactId>
+	<artifactId>commonframework-ftp</artifactId>
 	<packaging>jar</packaging>
-	<name>commonframework-util</name>
+	<name>commonframework-ftp</name>
 	<url>https://github.com/chenyuxin/combospring</url>
-	<description>commonframework库的util包</description>
+	<description>commonframework库的ftp模块</description>
 	<dependencies>
 		<dependency>
-			<groupId>com.github.chenyuxin.commonframework</groupId>
-			<artifactId>commonframework-base</artifactId>
+		    <groupId>commons-net</groupId>
+		    <artifactId>commons-net</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-pool2</artifactId>
 		</dependency>
 		
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-core</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
 		</dependency>
 		
 	</dependencies>

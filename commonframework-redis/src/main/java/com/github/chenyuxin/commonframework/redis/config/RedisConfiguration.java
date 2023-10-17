@@ -42,10 +42,10 @@ public class RedisConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	@ConditionalOnSingleCandidate(RedisConnectionFactory.class)
-	public static CommonRedisTemplate comboRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
-		CommonRedisTemplate comboRedisTemplate = new CommonRedisTemplate(redisConnectionFactory);
-		comboRedisTemplate.setEnableTransactionSupport(true);//开启所谓的事务，同dataSrouceTrasationManager一起使用
-		return comboRedisTemplate;
+	public static CommonRedisTemplate commonRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
+		CommonRedisTemplate commonRedisTemplate = new CommonRedisTemplate(redisConnectionFactory);
+		commonRedisTemplate.setEnableTransactionSupport(true);//开启所谓的事务，同dataSrouceTrasationManager一起使用
+		return commonRedisTemplate;
 	}
 	
 	/**
