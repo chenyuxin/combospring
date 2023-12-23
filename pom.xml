@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenyuxin.commonframework</groupId>
 	<artifactId>commonframework</artifactId>
-	<version>3.1.4</version>
+	<version>3.2.1</version>
 	<packaging>pom</packaging>
 	<name>commonframework</name>
 	<url>https://github.com/chenyuxin/combospring</url>
@@ -13,6 +13,7 @@
 		<module>commonframework-chinese</module>
 		<module>commonframework-cipher</module>
 		<module>commonframework-dao</module>
+		<module>commonframework-dependencies</module>
 		<module>commonframework-mvc</module>
 		<module>commonframework-redis</module>
 		<module>commonframework-util</module>
@@ -22,9 +23,10 @@
 		<module>commonframework-ftp</module>
 	</modules>
 	<properties>
+				<ojdbc11-version>21.9.0.0</ojdbc11-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>21</java.version>
-		<spring-boot.version>3.1.4</spring-boot.version>
+		<spring-boot.version>3.2.1</spring-boot.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>

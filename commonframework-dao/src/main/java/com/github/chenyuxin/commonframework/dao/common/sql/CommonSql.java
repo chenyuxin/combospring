@@ -1040,7 +1040,9 @@ public class CommonSql {
 	 * 将自定义查询sql替换成统计数据量的sql
 	 * @param sql
 	 * @return
+	 * @deprecated use请使用 DaoSqlReader.countSql
 	 */
+	@Deprecated(since = "3.2.0")
 	public static String countSql(String sql) {
 		sql = SqlReader.formatSQL(sql);
 		if (!sql.contains("select")) {//只能操作查询语句

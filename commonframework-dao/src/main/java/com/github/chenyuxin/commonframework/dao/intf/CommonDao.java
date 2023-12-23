@@ -87,7 +87,7 @@ public interface CommonDao {
 	String updateMap(Object object, String[] fieldNameByIds, TableType tableType, Object... daoOptions);
 	
 	/**
-	 * 新增或保存 数据库做新增或保存,mysql数据库必须数据库表建立主键才能正确使用此方法 
+	 * 新增或保存 数据库做新增或保存,mySql和postgreSql数据库必须数据库表建立主键才能正确使用此方法 
 	 * 对象类需要有@Table、@Id等标注
 	 * @param object 更新或保存 单个或List对象
 	 * @param daoOptions 可选设置参数
@@ -96,9 +96,9 @@ public interface CommonDao {
 	String saveOrUpdateObj(Object object, Object... daoOptions);
 	
 	/**
-	 * 新增或保存 数据库做新增或保存,mysql数据库必须数据库表建立主键才能正确使用此方法 
+	 * 新增或保存 数据库做新增或保存,mySql和postgreSql数据库必须数据库表建立主键才能正确使用此方法 
 	 * @param object 更新或保存 单个或List的  Map数据
-	 * @param fieldNameByIds 条件筛选字段（字段属性——驼峰会转下划线） mysql数据库必须在数据量建立主键
+	 * @param fieldNameByIds 条件筛选字段（字段属性——驼峰会转下划线） mySql和postgreSql数据库必须在数据量建立主键
 	 * @param tableType 数据库表名(必填)
 	 * @param daoOptions 可选设置参数
 	 * @param dataSourceName 使用其它配置的数据源可选, 其它数据源在spring配置文件bean的id字符串

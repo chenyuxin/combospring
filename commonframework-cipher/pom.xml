@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>commonframework</artifactId>
 		<groupId>com.github.chenyuxin.commonframework</groupId>
-		<version>3.1.4</version>
+		<version>3.2.1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>commonframework-cipher</artifactId>
@@ -20,7 +20,7 @@
 	
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcprov-jdk15on</artifactId>
+			<artifactId>bcprov-jdk18on</artifactId>
 		</dependency>
 		
 	</dependencies>

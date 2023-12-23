@@ -37,12 +37,13 @@ public class HttpReq {
 	/**
 	 * 同步发送http请求，(常用)
 	 * @param url 请求url
-	 * @param otherParam 其它参数(可选,不选使用默认)
-	 * @param HttpMethod 请求方法
-	 * @param Header 请求头
-	 * @param String body 请求体
-	 * @param Map<String,String> url传参
-	 * @param Duration 超时设置
+	 * @param otherParam 其它参数(可选,不选使用默认) [
+	 * <br> HttpMethod 请求方法
+	 * <br> Header 请求头
+	 * <br> String body 请求体
+	 * <br> Map<String,String> url传参
+	 * <br> Duration 超时设置
+	 *        ]
 	 * @return
 	 * 
 	 * <br>样例

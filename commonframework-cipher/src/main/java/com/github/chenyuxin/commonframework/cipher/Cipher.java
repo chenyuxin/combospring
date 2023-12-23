@@ -257,8 +257,9 @@ public enum Cipher {
 	/**
 	 * 哈希散列加密
 	 * @param source 原文
-	 * @param confs 可选参数：
-	 * @param ByteConverter (可选参数)byteConverter转换类型,默认使用16进制小写ByteConverter.Hex
+	 * @param confs 可选参数：[
+	 * 		ByteConverter (可选参数)byteConverter转换类型,默认使用16进制小写ByteConverter.Hex
+	 * ]
 	 * @return 转换类型定义的密文字符串
 	 * @throws Exception
 	 */
@@ -271,9 +272,10 @@ public enum Cipher {
 	/**
 	 * 哈希散列加密
 	 * @param source 原文
-	 * @param confs 可选参数：
-	 * @param ByteConverter (可选参数)byteConverter转换类型,默认使用16进制小写ByteConverter.Hex
-	 * @param Charset (可选参数)charset定义转换的字符集解码原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 * @param confs 可选参数：[
+	 * ByteConverter (可选参数)byteConverter转换类型,默认使用16进制小写ByteConverter.Hex
+	 * Charset (可选参数)charset定义转换的字符集解码原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 * ]
 	 * @return 转换类型定义的密文字符串
 	 * @throws Exception
 	 */
@@ -295,10 +297,11 @@ public enum Cipher {
 	 * 加密
 	 * @param source 原文
 	 * @param key 密钥(非对称加密默认为公钥)
-	 * @param confs 可选参数：
-	 * @param conf (byte[]的可选参数)在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用公钥加密
-	 * @param String (或者类型为byte[]的视情况选填)iv向量在使用向量的加密中为必填,字符串类型由ByteConverter确定
-	 * @param ByteConverter (可选参数)byteConverter转换类型,默认使用BASE64
+	 * @param confs 可选参数：[
+	 * 			conf (byte[]的可选参数)在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用公钥加密
+	 * 			String (或者类型为byte[]的视情况选填)iv向量在使用向量的加密中为必填,字符串类型由ByteConverter确定
+	 * 			ByteConverter (可选参数)byteConverter转换类型,默认使用BASE64
+	 * ]
 	 * @return 转换类型定义的密文字符串
 	 * @throws Exception
 	 */
@@ -343,11 +346,12 @@ public enum Cipher {
 	 * 加密
 	 * @param source 原文
 	 * @param key 密钥(非对称加密默认为公钥)
-	 * @param confs 可选参数：
-	 * @param conf (byte[]的可选参数)在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用公钥加密
-	 * @param String (或者类型为byte[]的视情况选填)iv向量在使用向量的加密中为必填,字符串类型由ByteConverter确定
-	 * @param ByteConverter (可选参数)byteConverter转换类型,默认使用BASE64
-	 * @param Charset (可选参数)charset定义转换的字符集解码原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 * @param confs 可选参数：[
+	 * 			conf (byte[]的可选参数)在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用公钥加密
+	 * 			String (或者类型为byte[]的视情况选填)iv向量在使用向量的加密中为必填,字符串类型由ByteConverter确定
+	 * 			ByteConverter (可选参数)byteConverter转换类型,默认使用BASE64
+	 * 			Charset (可选参数)charset定义转换的字符集解码原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 *  ]
 	 * @return 转换类型定义的密文字符串
 	 * @throws Exception
 	 */
@@ -396,11 +400,12 @@ public enum Cipher {
 	 * 加密
 	 * @param source 原文
 	 * @param key 密钥(非对称加密默认为公钥),字符串类型由ByteConverter确定
-	 * @param confs 可选参数：
-	 * @param conf (byte[]的可选参数) 在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用公钥加密
-	 * @param String (或者类型为byte[]的视情况选填)iv向量在使用向量的加密中为必填,字符串类型由ByteConverter确定
-	 * @param ByteConverter (可选参数)byteConverter转换类型,默认使用BASE64
-	 * @param Charset (可选参数)charset定义转换的字符集解码原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 * @param confs 可选参数：[
+	 * 			conf (byte[]的可选参数) 在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用公钥加密
+	 * 			String (或者类型为byte[]的视情况选填)iv向量在使用向量的加密中为必填,字符串类型由ByteConverter确定
+	 * 			ByteConverter (可选参数)byteConverter转换类型,默认使用BASE64
+	 * 			Charset (可选参数)charset定义转换的字符集解码原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 * ]
 	 * @return 转换类型定义的密文字符串
 	 * @throws Exception
 	 */
@@ -456,9 +461,10 @@ public enum Cipher {
 	 * 解密
 	 * @param chiper 密文
 	 * @param key 密钥(非对称加密默认为私钥)
-	 * @param confs 可选参数： 
-	 * @param conf (byte[]的可选参数)iv向量在使用向量的加密中为必填 或者 在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用私钥解密 
-	 * @param Charset (可选参数)charset定义转换的字符集生成原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 * @param confs 可选参数： [
+	 * 			conf (byte[]的可选参数)iv向量在使用向量的加密中为必填 或者 在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用私钥解密
+	 * 			Charset (可选参数)charset定义转换的字符集生成原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 *  ]
 	 * @return 字符集的原文字符串
 	 * @throws Exception
 	 */
@@ -497,11 +503,12 @@ public enum Cipher {
 	 * 解密
 	 * @param chiper 密文
 	 * @param key 密钥(非对称加密默认为私钥)
-	 * @param confs 可选参数： 
-	 * @param ByteConverter (可选参数)byteConverter转换类型,默认使用BASE64 (转换字符串类型的密文)
-	 * @param conf (byte[]的可选参数)在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用私钥解密 
-	 * @param String (或者类型为byte[]的视情况选填)iv向量在使用向量的加密中为必填,字符串类型由ByteConverter确定
-	 * @param Charset (可选参数)charset定义转换的字符集生成原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 * @param confs 可选参数： [
+	 * 			ByteConverter (可选参数)byteConverter转换类型,默认使用BASE64 (转换字符串类型的密文)
+	 * 			conf (byte[]的可选参数)在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用私钥解密
+	 * 			String (或者类型为byte[]的视情况选填)iv向量在使用向量的加密中为必填,字符串类型由ByteConverter确定
+	 * 			Charset (可选参数)charset定义转换的字符集生成原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 * ]
 	 * @return 字符集的原文字符串
 	 * @throws Exception
 	 */
@@ -554,11 +561,12 @@ public enum Cipher {
 	 * 解密
 	 * @param chiper 密文
 	 * @param key 密钥(非对称加密默认为私钥),字符串类型由ByteConverter确定
-	 * @param confs 可选参数： 
-	 * @param conf (byte[]的可选参数) 在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用私钥解密
-	 * @param String (或者类型为byte[]的视情况选填)iv向量在使用向量的加密中为必填,字符串类型由ByteConverter确定
-	 * @param ByteConverter (可选参数)byteConverter转换类型,默认使用BASE64 (转换字符串类型的密文密钥向量)
-	 * @param Charset (可选参数)charset定义转换的字符集生成原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 * @param confs 可选参数： [
+	 * 			conf (byte[]的可选参数) 在非对称加密中公私钥声明,Cipher.isPrivateKey为私钥,Cipher.isPublicKey为公钥,默认使用私钥解密
+	 * 			String (或者类型为byte[]的视情况选填)iv向量在使用向量的加密中为必填,字符串类型由ByteConverter确定
+	 * 			ByteConverter (可选参数)byteConverter转换类型,默认使用BASE64 (转换字符串类型的密文密钥向量)
+	 * 			Charset (可选参数)charset定义转换的字符集生成原文,默认使用CharsetUtil.CHARSET_UTF_8
+	 * ]
 	 * @return 字符集的原文字符串
 	 * @throws Exception
 	 */

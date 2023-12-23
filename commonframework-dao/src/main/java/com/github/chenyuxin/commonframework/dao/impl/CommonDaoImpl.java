@@ -18,6 +18,7 @@ import com.github.chenyuxin.commonframework.dao.common.anotation.Table;
 import com.github.chenyuxin.commonframework.dao.common.option.DaoOptions;
 import com.github.chenyuxin.commonframework.dao.common.option.JoinOptions;
 import com.github.chenyuxin.commonframework.dao.common.sql.CommonSql;
+import com.github.chenyuxin.commonframework.dao.common.sql.DaoSqlReader;
 import com.github.chenyuxin.commonframework.dao.config.DaoResource;
 import com.github.chenyuxin.commonframework.dao.intf.CommonDao;
 
@@ -564,7 +565,8 @@ public class CommonDaoImpl implements CommonDao{
 				}
 			}
 			
-			String countSql = CommonSql.countSql(sql);
+//			String countSql = CommonSql.countSql(sql);
+			String countSql = DaoSqlReader.countSql(sql, dataBaseType);
 			//自定义通用查询条件 已经转换为了sql,并已经将参数变量放入paramMapDao
 			int total = selectBaseObj(countSql, Integer.class, paramMapDao);
 			pageBean = new PageBean<T>(total, pageSize, currentPage , objList);

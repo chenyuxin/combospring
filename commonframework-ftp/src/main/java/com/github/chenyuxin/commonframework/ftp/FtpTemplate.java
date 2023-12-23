@@ -44,9 +44,7 @@ public class FtpTemplate {
 	/**
 	 * 删除文件
 	 * @param pathFile 要删除文件的路径
-	 * @param options 配置 可选
-	 * @param ftpSourceName ftp源名称,使用非默认ftp源
-	 * 
+	 * @param options 配置 可选 (ftpSourceName ftp源名称,使用非默认ftp源)
 	 */
 	public boolean deleteFile(String pathFile,Object... options) {
 		String ftpSourceName = defualtFtp;
@@ -75,12 +73,12 @@ public class FtpTemplate {
 	
 	/**
 	 * 下载文件<br>
-	 * @param pathName ftp路径和文件名
-	 * @param options 配置 
-	 * @param ftpSourceName ftp源名称,使用非默认ftp源 (可选)
-	 * @param downloadFile 下载File类型的文件与outputStream只能二选一,同时存在首选outputStream 
-	 * @param outputStream 下载OutputStream流式文件与downloadFile只能二选一,同时存在首选outputStream 
-	 * @return
+	 * @param pathFile ftp路径和文件名
+	 * @param options 配置 [ ftpSourceName ftp源名称,使用非默认ftp源 (可选) <br>
+	 *             	   		downloadFile 下载File类型的文件与outputStream只能二选一,同时存在首选outputStream <br>
+	 *             	   		outputStream 下载OutputStream流式文件与downloadFile只能二选一,同时存在首选outputStream <br>
+	 *                	  ]
+	 * @return boolean
 	 */
 	public boolean downloadFile(String pathFile,Object... options) {
 		String ftpSourceName = defualtFtp;
@@ -123,11 +121,11 @@ public class FtpTemplate {
 	 * 上传文件<br>
 	 * 如果目录文件不存在，则先创建目录文件
 	 * @param pathFile ftp路径和文件名
-	 * @param options 配置 
-	 * @param ftpSourceName ftp源名称,使用非默认ftp源 (可选)
-	 * @param originfile 上传File类型的文件与inputStream只能二选一,同时存在首选inputStream 
-	 * @param inputStream 上传InputStream流式文件与originfile只能二选一,同时存在首选inputStream 
-	 * @return
+	 * @param options 配置 [ ftpSourceName ftp源名称,使用非默认ftp源 (可选) <br>
+	 * 	  					originfile 上传File类型的文件与inputStream只能二选一,同时存在首选inputStream <br>
+	 * 	  					inputStream 上传InputStream流式文件与originfile只能二选一,同时存在首选inputStream <br>
+	 * 	  				  ]
+	 * @return boolean
 	 */
 	public boolean uploadFile(String pathFile, Object... options) {
 		String ftpSourceName = defualtFtp;
@@ -177,9 +175,8 @@ public class FtpTemplate {
 	 * 文件或目录是否已存在<br>
 	 * 判断路径是否存在子项，或文件是否存在。
 	 * @param path
-	 * @param options 配置 可选
-	 * @param ftpSourceName ftp源名称,使用非默认ftp源
-	 * @return
+	 * @param options 配置 可选 [ ftpSourceName ftp源名称,使用非默认ftp源 ]
+	 * @return boolean
 	 */
 	public boolean existFile(String path,Object... options) {
 		String ftpSourceName = defualtFtp;
@@ -207,8 +204,7 @@ public class FtpTemplate {
 	 * 创建目录<br>
 	 * 创建多层目录文件，如果有ftp服务器已存在该目录，则不创建，如果无，则创建
 	 * @param path Creates a new subdirectory on the FTP server in the current directory (if a relative pathname is given) or where specified (if an absolute pathname isgiven).
-	 * @param options 配置 可选
-	 * @param ftpSourceName ftp源名称,使用非默认ftp源
+	 * @param options 配置 可选 [ ftpSourceName ftp源名称,使用非默认ftp源 ]
 	 */
 	public boolean makeDirectory(String path,Object... options) {
 		String ftpSourceName = defualtFtp;

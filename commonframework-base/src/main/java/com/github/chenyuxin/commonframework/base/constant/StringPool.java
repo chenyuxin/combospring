@@ -1,5 +1,8 @@
 package com.github.chenyuxin.commonframework.base.constant;
 
+/**
+ * 字符串常量池
+ */
 public interface StringPool {
 	
 	String AMPERSAND = "&";
@@ -98,6 +101,10 @@ public interface StringPool {
 	String NEW_LINE = "\n";
 
 	String NOT_EQUAL = "!=";
+	
+	String WHERE = "WHERE";
+	
+	String AND = "AND";
 
 	String NOT_LIKE = "NOT LIKE";
 

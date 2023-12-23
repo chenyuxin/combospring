@@ -38,7 +38,7 @@ public class ValidUtil {
 	 * 传入需要验证的对象
 	 * @param <T>
 	 * @param ValidObj
-	 * @exception 验证有误抛出ValidationException异常
+	 * @Exception 验证有误抛出ValidationException异常
 	 */
 	public static <T> void validate(T ValidObj) {
 		

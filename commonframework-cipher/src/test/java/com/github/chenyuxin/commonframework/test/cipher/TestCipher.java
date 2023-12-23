@@ -147,10 +147,11 @@ public class TestCipher {
 	@Test
 	public void TestDES(){
 		String str = "就是中国@Ab123";
-		//String key = "012345678wonders1qaz2wsEfgdf4235hx1wdgcg2dg#@13Cd";
-		String key = "1abb6bde829622bc32de845d507238a2";
-		String iv = "%Td(8@3b";//Wrong IV length: must be 8 bytes long
-		
+		String key = "012345678wonders1qaz2wsEfgdf4235hx1wdgcg2dg#@13Cd";
+//		String key = "1abb6bde829622bc32de845d507238a2";
+//		String iv = "%Td(8@3b";//Wrong IV length: must be 8 bytes long
+//		String key = "Chris   ";
+		String iv = "12345678";//Wrong IV length: must be 8 bytes long
 		
 		String enString = DES.encrypt(str, key ,  iv );
 		System.out.println(enString);
