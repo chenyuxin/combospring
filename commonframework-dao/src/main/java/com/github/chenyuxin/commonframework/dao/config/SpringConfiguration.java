@@ -58,7 +58,7 @@ public class SpringConfiguration {
 	}
 	
 	/**
-	 * Mybatis
+	 * Mybatis配置一个可以使用mybatis jdbc的可能,但还是推荐使用commonDao处理持久层
 	 * @param dataSource
 	 * @return
 	 * @throws IOException
@@ -75,7 +75,7 @@ public class SpringConfiguration {
 //		sqlSessionFactoryBean.setConfigLocation(resource);
 		
 		//扫描entity包 使用别名
-		sqlSessionFactoryBean.setTypeAliasesPackage("com.github.chenyuxin");
+		sqlSessionFactoryBean.setTypeAliasesPackage("com.github.chenyuxin.mybatis.mapper");
 		
 		//扫描sql配置文件:mapper需要的xml文件
 		PathMatchingResourcePatternResolver prpr2 = new PathMatchingResourcePatternResolver();

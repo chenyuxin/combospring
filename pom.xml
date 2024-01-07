@@ -23,7 +23,7 @@
 		<module>commonframework-ftp</module>
 	</modules>
 	<properties>
-				<ojdbc11-version>21.9.0.0</ojdbc11-version>
+		<ojdbc11-version>21.9.0.0</ojdbc11-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>21</java.version>
 		<spring-boot.version>3.2.1</spring-boot.version>

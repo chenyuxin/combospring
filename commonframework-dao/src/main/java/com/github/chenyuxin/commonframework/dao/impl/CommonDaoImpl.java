@@ -59,7 +59,7 @@ public class CommonDaoImpl implements CommonDao{
 		try {
 			currentJdbcTemplate.update(sql, new HashMap<String,Object>());
 		} catch (Exception e) {
-			log.debug(e.getMessage());
+			log.debug(e.getMessage(),e);
 			return tableName.concat(": ").concat(DaoConst.delDropTable_FAILED_MESSAGE);
 		}
 		//daoResource.checkQureyDataCacheMap(dataSourceName,tableName);//TODO 扩展redis缓存
@@ -83,7 +83,7 @@ public class CommonDaoImpl implements CommonDao{
 			if (isThrowException) {
 				throw new RuntimeException(e.getMessage());
 			} else {
-				log.debug(e.getMessage());
+				log.debug(e.getMessage(),e);
 				//System.out.println(e.getMessage());
 				//e.printStackTrace();
 				return DaoConst.useTable_FAILED_MESSAGE;
@@ -130,7 +130,7 @@ public class CommonDaoImpl implements CommonDao{
 			} else {
 				//e.printStackTrace();
 				//System.out.println(e.getMessage());
-				log.debug(e.getMessage());
+				log.debug(e.getMessage(),e);
 				return DaoConst.saveObj_FAILED_MESSAGE.concat(": ").concat(e.getMessage());
 			}
 		}
@@ -166,7 +166,7 @@ public class CommonDaoImpl implements CommonDao{
 			} else {
 				//e.printStackTrace();
 				//System.out.println(e.getMessage());
-				log.debug(e.getMessage());
+				log.debug(e.getMessage(),e);
 				return DaoConst.saveObj_FAILED_MESSAGE.concat(": ").concat(e.getMessage());
 			}
 		}
@@ -217,7 +217,7 @@ public class CommonDaoImpl implements CommonDao{
 			} else {
 				//System.out.println(e.getMessage());
 				//e.printStackTrace();
-				log.debug(e.getMessage());
+				log.debug(e.getMessage(),e);
 				return DaoConst.updateObj_FAILED_MESSAGE.concat(": ").concat(e.getMessage());
 			}
 		}
@@ -251,7 +251,7 @@ public class CommonDaoImpl implements CommonDao{
 			} else {
 				//System.out.println(e.getMessage());
 				//e.printStackTrace();
-				log.debug(e.getMessage());
+				log.debug(e.getMessage(),e);
 				return DaoConst.updateObj_FAILED_MESSAGE;
 			}
 		}
@@ -316,7 +316,7 @@ public class CommonDaoImpl implements CommonDao{
 			} else {
 				//System.out.println(e.getMessage());
 				//e.printStackTrace();
-				log.debug(e.getMessage());
+				log.debug(e.getMessage(),e);
 				return DaoConst.mergeObj_FAILED_MESSAGE.concat(": ").concat(e.getMessage());
 			}
 		}
@@ -351,7 +351,7 @@ public class CommonDaoImpl implements CommonDao{
 			} else {
 				//System.out.println(e.getMessage());
 				//e.printStackTrace();
-				log.debug(e.getMessage());
+				log.debug(e.getMessage(),e);
 				return DaoConst.mergeObj_FAILED_MESSAGE;
 			}
 		}
@@ -400,7 +400,7 @@ public class CommonDaoImpl implements CommonDao{
 			} else {
 				//System.out.println(e.getMessage());
 				//e.printStackTrace();
-				log.debug(e.getMessage());
+				log.debug(e.getMessage(),e);
 				return DaoConst.delObj_FAILED_MESSAGE;
 			}
 		}
@@ -428,7 +428,7 @@ public class CommonDaoImpl implements CommonDao{
 			} else {
 				//System.out.println(e.getMessage());
 				//e.printStackTrace();
-				log.debug(e.getMessage());
+				log.debug(e.getMessage(),e);
 				return DaoConst.truncateTable_FAILED_MESSAGE;
 			}
 		}
@@ -461,7 +461,7 @@ public class CommonDaoImpl implements CommonDao{
 				} else {
 					//System.out.println(e.getMessage());
 					//e.printStackTrace();
-					log.debug(e.getMessage());
+					log.debug(e.getMessage(),e);
 				}
 			}
 			//daoResource.putQureyDataCache(objList, sql, paramMap, dataSourceName);//TODO 扩展redis缓存
@@ -526,7 +526,7 @@ public class CommonDaoImpl implements CommonDao{
 				} else {
 					//System.out.println(e.getMessage());
 					//e.printStackTrace();
-					log.debug(e.getMessage());
+					log.debug(e.getMessage(),e);
 				}
 			}
 			int total = getRecords(tableType,daoOptionsO);//返回记录数并缓存默认数据源的tableType
@@ -561,7 +561,7 @@ public class CommonDaoImpl implements CommonDao{
 				} else {
 					//System.out.println(e.getMessage());
 					//e.printStackTrace();
-					log.debug(e.getMessage());
+					log.debug(e.getMessage(),e);
 				}
 			}
 			
@@ -594,7 +594,7 @@ public class CommonDaoImpl implements CommonDao{
 				} else {
 					//System.out.println(e.getMessage());
 					//e.printStackTrace();
-					log.debug(e.getMessage());
+					log.debug(e.getMessage(),e);
 				}
 			}
 			//daoResource.putQureyDataCache(objList, sql, paramMapDao, daoOptions.getDataSourceName());
@@ -622,7 +622,7 @@ public class CommonDaoImpl implements CommonDao{
 				} else {
 					//System.out.println(e.getMessage());
 					//e.printStackTrace();
-					log.debug(e.getMessage());
+					log.debug(e.getMessage(),e);
 				}
 			}
 			//daoResource.putQureyDataCache(objList, sql, paramMapDao, daoOptions.getDataSourceName());
@@ -650,7 +650,7 @@ public class CommonDaoImpl implements CommonDao{
 				} else {
 					//System.out.println(e.getMessage());
 					//e.printStackTrace();
-					log.debug(e.getMessage());
+					log.debug(e.getMessage(),e);
 				}
 			}
 			//daoResource.putQureyDataCache(object, sql, paramMapDao, daoOptions.getDataSourceName());
@@ -676,7 +676,7 @@ public class CommonDaoImpl implements CommonDao{
 				} else {
 					//System.out.println(e.getMessage());
 					//e.printStackTrace();
-					log.debug(e.getMessage());
+					log.debug(e.getMessage(),e);
 				}
 			}
 			//daoResource.putQureyDataCache(object, sql, paramMapDao, daoOptions.getDataSourceName());
@@ -702,7 +702,7 @@ public class CommonDaoImpl implements CommonDao{
 				} else {
 					//System.out.println("selectBaseObj自定义sql查询获取基本类: ".concat(e.getMessage()));
 					//e.printStackTrace();
-					log.debug(e.getMessage());
+					log.debug(e.getMessage(),e);
 				}
 			}
 			//daoResource.putQureyDataCache(object, sql, paramMapDao, daoOptions.getDataSourceName());
@@ -728,7 +728,7 @@ public class CommonDaoImpl implements CommonDao{
 				} else {
 					//System.out.println("selectBaseObj自定义sql查询获取基本类: ".concat(e.getMessage()));
 					//e.printStackTrace();
-					log.debug(e.getMessage());
+					log.debug(e.getMessage(),e);
 				}
 			}
 			//daoResource.putQureyDataCache(objectList, sql, paramMapDao, daoOptions.getDataSourceName());
