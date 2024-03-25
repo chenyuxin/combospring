@@ -31,7 +31,8 @@ public class TransformUtil {
 						//System.out.println(e.name());
 						Method getValueMethod =  e.getClass().getDeclaredMethod("getValue");
 						Object value = getValueMethod.invoke(e);
-						if (field.get(origin).equals(value) ) {
+						Object originValue = field.get(origin);
+						if (null != originValue && originValue.equals(value) ) {
 							field.set(origin, e.getClass().getDeclaredMethod("getName").invoke(e));
 							isTransform = true;
 							break;

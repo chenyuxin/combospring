@@ -80,6 +80,7 @@ public class FtpTemplate {
 	 *                	  ]
 	 * @return boolean
 	 */
+	@SuppressWarnings("resource")
 	public boolean downloadFile(String pathFile,Object... options) {
 		String ftpSourceName = defualtFtp;
 		OutputStream outputStreamA = null;
@@ -127,6 +128,7 @@ public class FtpTemplate {
 	 * 	  				  ]
 	 * @return boolean
 	 */
+	@SuppressWarnings("resource")
 	public boolean uploadFile(String pathFile, Object... options) {
 		String ftpSourceName = defualtFtp;
 		InputStream inputStreamA = null;
