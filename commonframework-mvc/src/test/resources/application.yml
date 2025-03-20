@@ -1,0 +1,10 @@
+#在项目启动的配置文件必须包含以下属性的配置
+server:
+  port: 8080
+  servlet:
+    register-default-servlet: true
+
+spring:
+  profiles:
+    active: test
+

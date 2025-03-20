@@ -3,35 +3,36 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenyuxin.commonframework</groupId>
 	<artifactId>commonframework-dependencies</artifactId>
-	<version>3.2.4</version>
+	<version>3.4.3</version>
 	<packaging>pom</packaging>
 	<name>commonframework-dependencies</name>
 	<url>https://github.com/chenyuxin/combospring</url>
 	<description>commonframework库的dependencies模块,统一定义包的版本</description>
 	<properties>
-		<spring-boot.version>3.2.4</spring-boot.version>
+		<spring-boot.version>3.4.3</spring-boot.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
-		<commons-text.version>1.11.0</commons-text.version>
+		<commons-text.version>1.13.0</commons-text.version>
 		<commons-collections4.version>4.4</commons-collections4.version>
-		<druid.version>1.2.22</druid.version>
-		<fastjson.version>2.0.47</fastjson.version>
+		<druid.version>1.2.24</druid.version>
+		<fastjson.version>2.0.56</fastjson.version>
 		
-		<mybatis-spring>3.0.3</mybatis-spring>
-		<mybatis>3.5.15</mybatis>
+		<mybatis-spring>3.0.4</mybatis-spring>
+		<mybatis>3.5.19</mybatis>
 		<orai18n>19.3.0.0</orai18n>
 		<!-- 拼音 -->
 		<pinyin4j>2.5.1</pinyin4j>
 		<!-- 加密相关包 -->
-		<bcprov-jdk18on>1.77</bcprov-jdk18on>
+		<bcprov-jdk18on>1.80</bcprov-jdk18on>
 		<!-- ftp -->
-		<commons-net>3.10.0</commons-net>
+		<commons-net>3.11.1</commons-net>
 		<!-- swagger 和 knife4j -->
 		<knife4j-openapi3>4.5.0</knife4j-openapi3>
 		
 		<!-- xml -->
-		<xstream.version>1.4.20</xstream.version>
+		<xstream.version>1.4.21</xstream.version>
 		<dom4j.version>2.1.4</dom4j.version>
+		<woodstox.version>7.1.0</woodstox.version>
 		
 	</properties>
 	<dependencyManagement>
@@ -202,10 +203,10 @@
 			<dependency>
 				<groupId>com.fasterxml.woodstox</groupId>
 				<artifactId>woodstox-core</artifactId>
-				<version>6.5.1</version>
+				<version>${woodstox.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>kxml2</groupId>
+				<groupId>net.sf.kxml</groupId>
 				<artifactId>kxml2</artifactId>
 				<version>2.3.0</version>
 			</dependency>

@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>commonframework</artifactId>
 		<groupId>com.github.chenyuxin.commonframework</groupId>
-		<version>3.2.4</version>
+		<version>3.4.3</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>commonframework-xml</artifactId>
@@ -25,7 +25,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>kxml2</groupId>
+			<groupId>net.sf.kxml</groupId>
 			<artifactId>kxml2</artifactId>
 		</dependency>
 		<dependency>
