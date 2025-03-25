@@ -13,6 +13,7 @@
 		<module>commonframework-chinese</module>
 		<module>commonframework-cipher</module>
 		<module>commonframework-dao</module>
+		<module>commonframework-dao-jpa</module>
 		<module>commonframework-dependencies</module>
 		<module>commonframework-mvc</module>
 		<module>commonframework-redis</module>
@@ -25,7 +26,7 @@
 	<properties>
 		<ojdbc11-version>21.9.0.0</ojdbc11-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>21</java.version>
+		<java.version>24</java.version>
 		<spring-boot.version>3.4.3</spring-boot.version>
 	</properties>
 	<dependencyManagement>
