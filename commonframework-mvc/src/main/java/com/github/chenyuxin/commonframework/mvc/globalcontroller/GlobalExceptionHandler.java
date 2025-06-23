@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.validation.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  * 全局controller的异常捕获处理
  */
 @Slf4j
+@Hidden
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	

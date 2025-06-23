@@ -27,11 +27,9 @@ import com.alibaba.fastjson2.JSONWriter;
 import com.alibaba.fastjson2.JSONReader.Feature;
 import com.alibaba.fastjson2.support.config.FastJsonConfig;
 import com.alibaba.fastjson2.support.spring6.http.converter.FastJsonHttpMessageConverter;
-import com.github.chenyuxin.commonframework.base.util.CharsetUtil;
-
 
 @Configuration
-@ComponentScan(basePackages="com.github.chenyuxin.**.controller,com.github.chenyuxin.**.web,com.github.chenyuxin.**.rest,com.github.chenyuxin.**.*controller",
+@ComponentScan(basePackages="com.**.controller,com.**.web,com.**.rest,com.**.*controller",
 includeFilters={@Filter(type=FilterType.ANNOTATION,classes={Controller.class,ControllerAdvice.class,RestController.class})},
 excludeFilters={@Filter(type=FilterType.ANNOTATION,classes={Service.class,Repository.class})}
 )
@@ -61,11 +59,8 @@ public class MvcConfig implements WebMvcConfigurer{
         fastJsonHttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 		
 		FastJsonConfig fastJsonConfig = new FastJsonConfig();
-		fastJsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");
-		fastJsonConfig.setCharset(CharsetUtil.CHARSET_UTF_8);
 		fastJsonConfig.setWriterFeatures(JSONWriter.Feature.WriteMapNullValue,JSONWriter.Feature.WriteNulls);
 		fastJsonConfig.setReaderFeatures(Feature.UseNativeObject);
-		
         // 将配置设置给转换器并添加到HttpMessageConverter转换器列表中
 		fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);
 		return fastJsonHttpMessageConverter;
