@@ -736,6 +736,7 @@ public class CommonDaoImpl implements CommonDao{
 		return objectList;
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public int getRecords(TableType tableType, Object... daoOptionsO) {
 		DaoOptions daoOptions = new DaoOptions(daoOptionsO,tableType);

@@ -5,9 +5,6 @@ import java.io.IOException;
 import javax.sql.DataSource;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.ibatis.annotations.Mapper;
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration;
@@ -27,8 +24,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 import com.github.chenyuxin.commonframework.dao.common.DaoConst;
+import com.github.chenyuxin.commonframework.dao.config.druid.DruidDataSourceAutoConfigure;
 
 import org.springframework.context.annotation.ComponentScan.Filter;
 
@@ -39,11 +36,10 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 @Configuration
 @AutoConfigureBefore(PropertyPlaceholderAutoConfiguration.class)
 @AutoConfigureAfter(DruidDataSourceAutoConfigure.class)
-@ComponentScan(basePackages="com.github.chenyuxin",
+@ComponentScan(basePackages="com.**",
 excludeFilters={@Filter(type=FilterType.ANNOTATION,
 		classes={Controller.class,ControllerAdvice.class,RestController.class,EnableWebMvc.class})}
 )
-@MapperScan(annotationClass = Mapper.class,basePackages = "com.github.chenyuxin")
 @Import({DruidDataSourceAutoConfigure.class,DaoConfResource.class})//引入druid连接池
 public class SpringConfiguration {
 	
@@ -55,34 +51,6 @@ public class SpringConfiguration {
 	@Bean("NamedParameterJdbcTemplate")
 	public static NamedParameterJdbcTemplate jdbcTemplate(DataSource dataSource){
 		return new NamedParameterJdbcTemplate(dataSource);
-	}
-	
-	/**
-	 * Mybatis配置一个可以使用mybatis jdbc的可能,但还是推荐使用commonDao处理持久层
-	 * @param dataSource
-	 * @return
-	 * @throws IOException
-	 */
-	@Bean("sqlSessionFactory")
-	public static SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) throws IOException {
-		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-		//注入数据库连接池
-		sqlSessionFactoryBean.setDataSource(dataSource);
-		
-		//配置MyBaties全局配置文件:mybatis-config.xml
-//		PathMatchingResourcePatternResolver prpr = new PathMatchingResourcePatternResolver();
-//		Resource resource = prpr.getResource("classpath:mybatis-config.xml");
-//		sqlSessionFactoryBean.setConfigLocation(resource);
-		
-		//扫描entity包 使用别名
-		sqlSessionFactoryBean.setTypeAliasesPackage("com.github.chenyuxin.mybatis.mapper");
-		
-		//扫描sql配置文件:mapper需要的xml文件
-		PathMatchingResourcePatternResolver prpr2 = new PathMatchingResourcePatternResolver();
-    	Resource[] resourcePropertiesFile = prpr2.getResources("classpath*:/mapper/*.xml");
-		sqlSessionFactoryBean.setMapperLocations(resourcePropertiesFile);
-		
-		return sqlSessionFactoryBean;
 	}
 	
 	/**

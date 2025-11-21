@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>commonframework</artifactId>
 		<groupId>com.github.chenyuxin.commonframework</groupId>
-		<version>3.4.3</version>
+		<version>4.0.0-RC2</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>commonframework-dao</artifactId>
@@ -20,10 +20,6 @@
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-jdbc</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-web</artifactId>
 		</dependency>
 		<dependency>
@@ -35,6 +31,11 @@
 			<artifactId>spring-boot-autoconfigure</artifactId>
 		</dependency>
 		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<!-- 
+		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<exclusions>
@@ -43,6 +44,11 @@
 					<artifactId>slf4j-api</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
 		</dependency>
 		
 		<dependency>
@@ -58,14 +64,6 @@
 			<artifactId>postgresql</artifactId>
 		</dependency>
 		
-		<dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis-spring</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis</artifactId>
-		</dependency>
 		<!-- 
 		<dependency>
 		    <groupId>com.oracle.ojdbc</groupId>

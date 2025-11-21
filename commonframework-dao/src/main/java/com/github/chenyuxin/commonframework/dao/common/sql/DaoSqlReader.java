@@ -27,7 +27,8 @@ public class DaoSqlReader {
      * @param jdbcType
      * @return
      */
-    public static List<String> getSelectColumns(String sql, String jdbcType) { //类型转换
+    @SuppressWarnings("null")
+	public static List<String> getSelectColumns(String sql, String jdbcType) { //类型转换
         List<String> columns = new ArrayList<String>();
         //格式化sql语句
 //        String sql = SQLUtils.format(sqlOld, jdbcType);

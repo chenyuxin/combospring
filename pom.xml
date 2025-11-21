@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenyuxin.commonframework</groupId>
 	<artifactId>commonframework</artifactId>
-	<version>3.4.3</version>
+	<version>4.0.0-RC2</version>
 	<packaging>pom</packaging>
 	<name>commonframework</name>
 	<url>https://github.com/chenyuxin/combospring</url>
@@ -26,8 +26,8 @@
 	<properties>
 		<ojdbc11-version>21.9.0.0</ojdbc11-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>24</java.version>
-		<spring-boot.version>3.4.3</spring-boot.version>
+		<java.version>25</java.version>
+		<spring-boot.version>4.0.0-RC2</spring-boot.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -75,7 +75,7 @@
 		</dependency>
 		<dependency>
 		    <groupId>com.alibaba.fastjson2</groupId>
-		    <artifactId>fastjson2-extension-spring6</artifactId>
+		    <artifactId>fastjson2-extension</artifactId>
 		</dependency>
 
 		<dependency>
