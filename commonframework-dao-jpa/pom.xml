@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>commonframework</artifactId>
 		<groupId>com.github.chenyuxin.commonframework</groupId>
-		<version>3.4.3</version>
+		<version>4.0.0-RC2</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>commonframework-dao-jpa</artifactId>
@@ -13,6 +13,7 @@
 	<url>https://github.com/chenyuxin/combospring</url>
 	<description>commonframework库的dao使用jpa模块</description>
 	<dependencies>
+			
 		<dependency>
 			<groupId>com.github.chenyuxin.commonframework</groupId>
 			<artifactId>commonframework-base</artifactId>
@@ -39,7 +40,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
+			<artifactId>druid</artifactId>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>

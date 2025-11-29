@@ -13,7 +13,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -25,8 +24,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 import com.github.chenyuxin.commonframework.daojpa.common.DaoConst;
+import com.github.chenyuxin.commonframework.daojpa.config.druid.DruidDataSourceAutoConfigure;
+
+import org.springframework.context.annotation.ComponentScan.Filter;
 
 /**
  * 使用配置类配置spring;
@@ -75,7 +76,10 @@ public class SpringConfiguration {
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() throws IOException{
     	PathMatchingResourcePatternResolver prpr = new PathMatchingResourcePatternResolver();
+    	
     	Resource[] resourcePropertiesFile = prpr.getResources("classpath*:/properties/*.properties");
+    	//Resource[] resource = prpr.getResources("classpath*:*.properties");
+    	
 		PropertySourcesPlaceholderConfigurer pspc = new PropertySourcesPlaceholderConfigurer();
 		pspc.setFileEncoding("UTF-8");
 		//pspc.setIgnoreUnresolvablePlaceholders(true);//忽略读取错误配置

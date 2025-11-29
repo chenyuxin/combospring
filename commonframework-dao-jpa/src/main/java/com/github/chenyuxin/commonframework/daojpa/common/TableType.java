@@ -10,7 +10,7 @@ import com.github.chenyuxin.commonframework.base.constant.StringPool;
  * 表名
  * 
  * 产生实例可以通过下面方式
- * TableType.c("表名") 
+ * TableType.of("表名") 
  */
 public class TableType {
 	
@@ -39,7 +39,7 @@ public class TableType {
 	 * @param tableName 如果带有schema， tableName可以是 schema.tableName的形式
 	 * @return
 	 */
-	public static TableType c(String tableName){
+	public static TableType of(String tableName){
 		tableName = tableName.toUpperCase();
 		
 		TableType tableType = tableTypeMap.get(tableName);
