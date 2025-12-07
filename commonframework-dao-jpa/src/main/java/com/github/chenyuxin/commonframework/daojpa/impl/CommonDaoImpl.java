@@ -32,13 +32,10 @@ import lombok.extern.slf4j.Slf4j;
 @Repository
 public class CommonDaoImpl implements CommonDao {
 
-	private final EntityManager entityManager;
-
 	private final DaoResource daoResource;
 
 	@Autowired
-	CommonDaoImpl(final EntityManager entityManager, final DaoResource daoResource) {
-		this.entityManager = entityManager;
+	CommonDaoImpl(final DaoResource daoResource) {
 		this.daoResource = daoResource;
 	}
 
@@ -49,7 +46,6 @@ public class CommonDaoImpl implements CommonDao {
 		try {
 			currentJdbcTemplate.queryForObject(sql, new HashMap<>(), Integer.class);
 		} catch (DataAccessException e) {
-			// System.out.println(e.getMessage());//TODO 捕获不存在表的异常，判断异常
 			TableType.delTableType(tableType);
 			return false;// 表不存在
 		}
@@ -540,7 +536,7 @@ public class CommonDaoImpl implements CommonDao {
 		Map<String, Object> paramMapDao = new HashMap<>();
 		paramMapDao.putAll(daoOptions.getParamMap());
 		String sql = CommonSql.selectSql4Map(attributeNames, daoOptions.getTableType().getTableName(),
-				currentPage , pageSize, dataBaseType, paramMapDao, daoOptions.getQueryConditions());
+				currentPage, pageSize, dataBaseType, paramMapDao, daoOptions.getQueryConditions());
 		List<Map<String, Object>> objList = selectObjMap(paramMapDao, daoOptions.getDataSourceName(), sql,
 				daoOptions.isThrowException());
 		Long total = getRecords(tableType, daoOptions);// 返回记录数并缓存默认数据源的tableType
@@ -549,9 +545,12 @@ public class CommonDaoImpl implements CommonDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> Page<T> selectObj(int currentPage, int pageSize, Class<T> clazz, Object... daoOptions) {
+	public <T> Page<T> selectObj(int currentPage, int pageSize, Class<T> clazz, Object... daoOptionsO) {
+		DaoOptions daoOptions = new DaoOptions(daoOptionsO);
+		String dataSourceName = daoOptions.getDataSourceName();
+		EntityManager currentEntityManager = daoResource.moreEntityManager(dataSourceName);
 		@SuppressWarnings("rawtypes")
-		JpaRepository repository = new SimpleJpaRepository(clazz, entityManager);
+		JpaRepository repository = new SimpleJpaRepository(clazz, currentEntityManager);
 		return repository.findAll(null, PageRequest.of(currentPage - 1, pageSize));
 	}
 

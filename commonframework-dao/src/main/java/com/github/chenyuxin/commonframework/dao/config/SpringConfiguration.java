@@ -36,7 +36,7 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 @Configuration
 @AutoConfigureBefore(PropertyPlaceholderAutoConfiguration.class)
 @AutoConfigureAfter(DruidDataSourceAutoConfigure.class)
-@ComponentScan(basePackages="com.**",
+@ComponentScan(basePackages="com.github.chenyuxin",
 excludeFilters={@Filter(type=FilterType.ANNOTATION,
 		classes={Controller.class,ControllerAdvice.class,RestController.class,EnableWebMvc.class})}
 )

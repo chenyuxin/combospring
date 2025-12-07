@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenyuxin.commonframework</groupId>
 	<artifactId>commonframework</artifactId>
-	<version>4.0.0-RC2</version>
+	<version>4.0.0</version>
 	<packaging>pom</packaging>
 	<name>commonframework</name>
 	<url>https://github.com/chenyuxin/combospring</url>
@@ -27,7 +27,7 @@
 		<ojdbc11-version>21.9.0.0</ojdbc11-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>25</java.version>
-		<spring-boot.version>4.0.0-RC2</spring-boot.version>
+		<spring-boot.version>4.0.0</spring-boot.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -103,6 +103,12 @@
 					<target>${java.version}</target>
 					<compilerArgument>-parameters</compilerArgument>
 					<!-- 保留参数名 -->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </path>
+                    </annotationProcessorPaths>
 				</configuration>
 			</plugin>
 			<plugin>

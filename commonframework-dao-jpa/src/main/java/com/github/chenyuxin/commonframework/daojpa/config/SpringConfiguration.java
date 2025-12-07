@@ -36,56 +36,57 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 @Configuration
 @AutoConfigureBefore(PropertyPlaceholderAutoConfiguration.class)
 @AutoConfigureAfter(DruidDataSourceAutoConfigure.class)
-@ComponentScan(basePackages="com.github.chenyuxin",
-excludeFilters={@Filter(type=FilterType.ANNOTATION,
-		classes={Controller.class,ControllerAdvice.class,RestController.class,EnableWebMvc.class})}
-)
-@Import({DruidDataSourceAutoConfigure.class,DaoConfResource.class})//引入druid连接池
+@ComponentScan(basePackages = "com.github.chenyuxin", excludeFilters = {
+		@Filter(type = FilterType.ANNOTATION, classes = { Controller.class, ControllerAdvice.class,
+				RestController.class, EnableWebMvc.class }) })
+@Import({ DruidDataSourceAutoConfigure.class, DaoConfResource.class, MultiDataSourceRegister.class }) // 引入druid连接池
 public class SpringConfiguration {
-	
+
 	/**
 	 * 使用NamedParameterJdbcTemplate参数命名springJdbc为commonDao的jdbc
+	 * 
 	 * @param dataSource
 	 * @return
 	 */
 	@Bean("NamedParameterJdbcTemplate")
-	public static NamedParameterJdbcTemplate jdbcTemplate(DataSource dataSource){
+	public static NamedParameterJdbcTemplate jdbcTemplate(DataSource dataSource) {
 		return new NamedParameterJdbcTemplate(dataSource);
 	}
-	
+
 	/**
 	 * 对默认数据源创建事务管理器
+	 * 
 	 * @param dataSource
 	 * @return
 	 */
-	//@Bean("dataSourceTransactionManager")
 	@Bean(DaoConst.defaultDataSourceName + DaoConst.TransactionManager)
 	public static TransactionManager transactionManager(DataSource dataSource) {
 		DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
-        dataSourceTransactionManager.setDataSource(dataSource); // 设置数据源
-        return dataSourceTransactionManager;
+		dataSourceTransactionManager.setDataSource(dataSource); // 设置数据源
+		return dataSourceTransactionManager;
 	}
-	
+
 	/**
 	 * 创建资源文件解析器(读配置文件properties)
-	 * @throws IOException 
-	//注解大类的@PropertySource无法使用通配符,只能定义file路径或者classpath:
-	//@PropertySource(value="classpath*:/properties/*.properties",encoding="UTF-8",ignoreResourceNotFound=false)
-	//@PropertySource(value="WEB-INF/classes/properties/applicationJdbc.properties",encoding="UTF-8",ignoreResourceNotFound=false)
+	 * 
+	 * @throws IOException
+	 *                     //注解大类的@PropertySource无法使用通配符,只能定义file路径或者classpath:
+	 *                     //@PropertySource(value="classpath*:/properties/*.properties",encoding="UTF-8",ignoreResourceNotFound=false)
+	 *                     //@PropertySource(value="WEB-INF/classes/properties/applicationJdbc.properties",encoding="UTF-8",ignoreResourceNotFound=false)
 	 */
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() throws IOException{
-    	PathMatchingResourcePatternResolver prpr = new PathMatchingResourcePatternResolver();
-    	
-    	Resource[] resourcePropertiesFile = prpr.getResources("classpath*:/properties/*.properties");
-    	//Resource[] resource = prpr.getResources("classpath*:*.properties");
-    	
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() throws IOException {
+		PathMatchingResourcePatternResolver prpr = new PathMatchingResourcePatternResolver();
+
+		Resource[] resourcePropertiesFile = prpr.getResources("classpath*:/properties/*.properties");
+		// Resource[] resource = prpr.getResources("classpath*:*.properties");
+
 		PropertySourcesPlaceholderConfigurer pspc = new PropertySourcesPlaceholderConfigurer();
 		pspc.setFileEncoding("UTF-8");
-		//pspc.setIgnoreUnresolvablePlaceholders(true);//忽略读取错误配置
-    	//pspc.setLocations(ArrayUtils.addAll(resourcePropertiesFile, resource));
-    	pspc.setLocations(ArrayUtils.addAll(resourcePropertiesFile));
-    	return pspc;
-    }
+		// pspc.setIgnoreUnresolvablePlaceholders(true);//忽略读取错误配置
+		// pspc.setLocations(ArrayUtils.addAll(resourcePropertiesFile, resource));
+		pspc.setLocations(ArrayUtils.addAll(resourcePropertiesFile));
+		return pspc;
+	}
 
 }

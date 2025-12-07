@@ -9,7 +9,6 @@ import org.springframework.boot.jdbc.autoconfigure.DataSourceProperties;
 
 import java.util.List;
 
-@SuppressWarnings("serial")
 @ConfigurationProperties("spring.datasource.druid")
 public class DruidDataSourceWrapper extends DruidDataSource implements InitializingBean {
     @Autowired
@@ -17,7 +16,8 @@ public class DruidDataSourceWrapper extends DruidDataSource implements Initializ
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        //if not found prefix 'spring.datasource.druid' jdbc properties ,'spring.datasource' prefix jdbc properties will be used.
+        // if not found prefix 'spring.datasource.druid' jdbc properties
+        // ,'spring.datasource' prefix jdbc properties will be used.
         if (super.getUsername() == null) {
             super.setUsername(basicProperties.determineUsername());
         }
@@ -40,7 +40,8 @@ public class DruidDataSourceWrapper extends DruidDataSource implements Initializ
     }
 
     /**
-     * Ignore the 'maxEvictableIdleTimeMillis &lt; minEvictableIdleTimeMillis' validate,
+     * Ignore the 'maxEvictableIdleTimeMillis &lt; minEvictableIdleTimeMillis'
+     * validate,
      * it will be validated again in {@link DruidDataSource#init()}.
      * <p>
      * for fix issue #3084, #2763
