@@ -9,6 +9,11 @@ import java.util.Map;
 import com.github.chenyuxin.commonframework.base.util.BaseUtil;
 import com.github.chenyuxin.commonframework.daojpa.common.DaoConst;
 import com.github.chenyuxin.commonframework.daojpa.common.TableType;
+import com.github.chenyuxin.commonframework.daojpa.option.custom.GreaterThan;
+import com.github.chenyuxin.commonframework.daojpa.option.custom.LessThan;
+import com.github.chenyuxin.commonframework.daojpa.option.custom.QueryConditionCommonEquals;
+import com.github.chenyuxin.commonframework.daojpa.option.custom.QueryConditionCommonLike;
+import com.github.chenyuxin.commonframework.daojpa.option.custom.QueryConditionCommonOrder;
 
 /**
  * dao其它选项
@@ -205,11 +210,6 @@ public class DaoOptions {
 			return this;
 		}
 
-		public Builder addParam(String key, Object value) {
-			this.paramMap.put(key, value);
-			return this;
-		}
-
 		public Builder queryConditions(List<QueryCondition> queryConditions) {
 			if (queryConditions != null) {
 				this.queryConditions.addAll(queryConditions);
@@ -222,13 +222,60 @@ public class DaoOptions {
 			return this;
 		}
 
+		public Builder gt(String key, Object value) {
+			QueryCondition queryCondition = new GreaterThan(key, value, key);
+			this.queryConditions.add(queryCondition);
+			return this;
+		}
+
+		public Builder gte(String key, Object value) {
+			QueryCondition queryCondition = new GreaterThan(key, value, key, true);
+			this.queryConditions.add(queryCondition);
+			return this;
+		}
+
+		public Builder lt(String key, Object value) {
+			QueryCondition queryCondition = new LessThan(key, value, key);
+			this.queryConditions.add(queryCondition);
+			return this;
+		}
+
+		public Builder lte(String key, Object value) {
+			QueryCondition queryCondition = new LessThan(key, value, key, true);
+			this.queryConditions.add(queryCondition);
+			return this;
+		}
+
+		public Builder eq(String key, Object value) {
+			this.paramMap.put(key, value);
+			return this;
+		}
+
+		public Builder like(String key, Object value) {
+			QueryCondition queryCondition = new QueryConditionCommonLike(key, value);
+			this.queryConditions.add(queryCondition);
+			return this;
+		}
+
+		public Builder ne(String key, Object value) {
+			QueryCondition queryCondition = new QueryConditionCommonEquals(key, value, key, true);
+			this.queryConditions.add(queryCondition);
+			return this;
+		}
+
+		public Builder orderBy(String key, boolean isDesc) {
+			QueryCondition queryCondition = new QueryConditionCommonOrder(isDesc, key);
+			this.queryConditions.add(queryCondition);
+			return this;
+		}
+
 		public Builder tableType(TableType tableType) {
 			this.tableType = tableType;
 			return this;
 		}
 
-		public Builder throwException(boolean throwException) {
-			this.runtimeException = throwException;
+		public Builder throwRuntimeException() {
+			this.runtimeException = true;
 			return this;
 		}
 

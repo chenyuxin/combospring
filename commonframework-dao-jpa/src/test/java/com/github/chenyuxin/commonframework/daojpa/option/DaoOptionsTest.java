@@ -14,7 +14,7 @@ public class DaoOptionsTest {
     public void testBuilder() {
         DaoOptions options = DaoOptions.builder()
                 .dataSourceName("ds1")
-                .addParam("key", "value")
+                .eq("key", "value")
                 .throwException(true)
                 .build();
 
@@ -39,7 +39,7 @@ public class DaoOptionsTest {
     public void testNestedDaoOptions() {
         DaoOptions inner = DaoOptions.builder()
                 .dataSourceName("innerDS")
-                .addParam("innerK", "innerV")
+                .eq("innerK", "innerV")
                 .build();
 
         DaoOptions outer = new DaoOptions("outerDS", inner);

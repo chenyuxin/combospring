@@ -9,13 +9,13 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.github.chenyuxin.commonframework.daojpa.common.sql.CommonSql;
+import com.github.chenyuxin.commonframework.daojpa.common.sql.DaoSqlReader;
 import com.alibaba.druid.DbType;
 import com.github.chenyuxin.commonframework.daojpa.common.DaoConst;
 import com.github.chenyuxin.commonframework.daojpa.common.DaoUtil;
@@ -23,6 +23,7 @@ import com.github.chenyuxin.commonframework.daojpa.common.TableType;
 import com.github.chenyuxin.commonframework.daojpa.config.DaoResource;
 import com.github.chenyuxin.commonframework.daojpa.intf.CommonDao;
 import com.github.chenyuxin.commonframework.daojpa.option.DaoOptions;
+import com.github.chenyuxin.commonframework.daojpa.option.custom.SpecificationBuilder;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Table;
@@ -543,21 +544,54 @@ public class CommonDaoImpl implements CommonDao {
 		return new PageImpl<>(objList, PageRequest.of(currentPage - 1, pageSize), total);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> Page<T> selectObj(int currentPage, int pageSize, Class<T> clazz, Object... daoOptionsO) {
 		DaoOptions daoOptions = new DaoOptions(daoOptionsO);
 		String dataSourceName = daoOptions.getDataSourceName();
 		EntityManager currentEntityManager = daoResource.moreEntityManager(dataSourceName);
-		@SuppressWarnings("rawtypes")
-		JpaRepository repository = new SimpleJpaRepository(clazz, currentEntityManager);
-		return repository.findAll(null, PageRequest.of(currentPage - 1, pageSize));
+		// SimpleJpaRepository 实现了 JpaRepository 和 JpaSpecificationExecutor 接口
+		SimpleJpaRepository<T, ?> repository = new SimpleJpaRepository<>(clazz, currentEntityManager);
+		// 构建条件查询 Specification
+		org.springframework.data.jpa.domain.Specification<T> spec = SpecificationBuilder.build(
+				daoOptions.getParamMap(), daoOptions.getQueryConditions());
+		return repository.findAll(spec, PageRequest.of(currentPage - 1, pageSize));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public <T> Page<T> selectObj(String sql, int currentPage, int pageSize, Class<T> clazz, Object... daoOptions) {
-		// TODO Auto-generated method stub
-		return null;
+	public <T> Page<T> selectObj(String sql, int currentPage, int pageSize, Class<T> clazz, Object... daoOptionsO) {
+		DaoOptions daoOptions = new DaoOptions(daoOptionsO);
+		NamedParameterJdbcTemplate currentJdbcTemplate = daoResource.moreJdbcTemplate(daoOptions.getDataSourceName());
+		DbType dataBaseType = daoResource.getDataBaseType(daoOptions.getDataSourceName());// 获取数据库类型
+		Map<String, Object> paramMapDao = new HashMap<String, Object>();
+		paramMapDao.putAll(daoOptions.getParamMap());
+		String pagingSql = CommonSql.pageing(sql, currentPage, pageSize, dataBaseType);
+		Page<T> page = daoResource.getQureyDataCache(pagingSql, paramMapDao, daoOptions.getDataSourceName());
+		if (null == page) {
+			daoResource.printSql(pagingSql);
+			List<T> objList = null;
+			try {
+				if (null == clazz || Map.class == clazz) {
+					objList = (List<T>) currentJdbcTemplate.queryForList(pagingSql, paramMapDao);
+				} else {
+					objList = currentJdbcTemplate.query(pagingSql, paramMapDao, new BeanPropertyRowMapper<T>(clazz));
+				}
+			} catch (Exception e) {
+				if (daoOptions.isThrowException()) {
+					throw new RuntimeException(e.getMessage());
+				} else {
+					// System.out.println(e.getMessage());
+					// e.printStackTrace();
+					log.debug(e.getMessage(), e);
+				}
+			}
+
+			String countSql = DaoSqlReader.countSql(sql, dataBaseType);
+			// 自定义通用查询条件 已经转换为了sql,并已经将参数变量放入paramMapDao
+			int total = selectBaseObj(countSql, Integer.class, paramMapDao);
+			page = new PageImpl<>(objList, PageRequest.of(currentPage - 1, pageSize), total);
+		}
+		return page;
 	}
 
 	@Override
