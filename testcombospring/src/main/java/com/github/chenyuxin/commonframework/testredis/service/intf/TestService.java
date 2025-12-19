@@ -21,4 +21,9 @@ public interface TestService {
 	 */
 	List<Map<String, Object>> queryByPhoneNoDs2(String phoneNo);
 
+	/**
+	 * 验证CommonDao所有方法
+	 */
+	void verifyCommonDao();
+
 }

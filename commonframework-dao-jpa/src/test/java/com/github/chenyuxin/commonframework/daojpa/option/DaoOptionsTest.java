@@ -15,7 +15,7 @@ public class DaoOptionsTest {
         DaoOptions options = DaoOptions.builder()
                 .dataSourceName("ds1")
                 .eq("key", "value")
-                .throwException(true)
+                .throwRuntimeException()
                 .build();
 
         assertEquals("ds1", options.getDataSourceName());

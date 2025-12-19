@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenyuxin.commonframework</groupId>
 	<artifactId>commonframework-dependencies</artifactId>
-	<version>4.0.0</version>
+	<version>4.0.1</version>
 	<packaging>pom</packaging>
 	<name>commonframework-dependencies</name>
 	<url>https://github.com/chenyuxin/combospring</url>
 	<description>commonframework库的dependencies模块,统一定义包的版本</description>
 	<properties>
-		<spring-boot.version>4.0.0</spring-boot.version>
+		<spring-boot.version>4.0.1</spring-boot.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
 		<commons-text.version>1.14.0</commons-text.version>

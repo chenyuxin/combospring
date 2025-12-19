@@ -43,5 +43,18 @@ public class TestController {
 	}
 	
 	
+	@Autowired 
+	private com.github.chenyuxin.commonframework.testredis.service.intf.TestService testService;
+
+	@RequestMapping("/verifyCommonDao")
+	public org.springframework.http.ResponseEntity<String> verifyCommonDao() {
+		try {
+			testService.verifyCommonDao();
+			return org.springframework.http.ResponseEntity.ok("Verification completed successfully. Check logs for details.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return org.springframework.http.ResponseEntity.internalServerError().body("Verification failed: " + e.getMessage());
+		}
+	}
 
 }
