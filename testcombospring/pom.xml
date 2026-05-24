@@ -23,7 +23,7 @@
     <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>25</java.version>
-    <spring-boot.version>4.0.1</spring-boot.version>
+    <spring-boot.version>4.0.6</spring-boot.version>
     
   </properties>
   
