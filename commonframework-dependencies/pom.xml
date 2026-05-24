@@ -12,25 +12,25 @@
 		<spring-boot.version>4.0.6</spring-boot.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
-		<commons-text.version>1.14.0</commons-text.version>
+		<commons-text.version>1.15.0</commons-text.version>
 		<commons-collections4.version>4.5.0</commons-collections4.version>
-		<druid.version>1.2.27</druid.version>
-		<fastjson.version>2.0.60</fastjson.version>
+		<druid.version>1.2.28</druid.version>
+		<fastjson.version>2.0.62</fastjson.version>
 		
 		<orai18n>19.3.0.0</orai18n>
 		<!-- 拼音 -->
 		<pinyin4j>2.5.1</pinyin4j>
 		<!-- 加密相关包 -->
-		<bcprov-jdk18on>1.82</bcprov-jdk18on>
+		<bcprov-jdk18on>1.84</bcprov-jdk18on>
 		<!-- ftp -->
-		<commons-net>3.12.0</commons-net>
+		<commons-net>3.13.0</commons-net>
 		<!-- swagger 和 knife4j -->
 		<knife4j-openapi3>4.5.0</knife4j-openapi3>
 		
 		<!-- xml -->
 		<xstream.version>1.4.21</xstream.version>
 		<dom4j.version>2.2.0</dom4j.version>
-		<woodstox.version>7.1.1</woodstox.version>
+		<woodstox.version>7.2.0</woodstox.version>
 		
 	</properties>
 	<dependencyManagement>
