@@ -51,7 +51,7 @@ public class TestServiceImpl implements TestService {
     public List<Map<String, Object>> queryByPhoneNoDs1(String phoneNo) {
         return commonDao.selectObjMap("select * from testredis where phone_no=:phoneNo", 
         		DaoOptions.builder()
-        		.addParam("phoneNo", phoneNo)
+        		.eq("phoneNo", phoneNo)
         		.build());
     }
 
@@ -61,7 +61,7 @@ public class TestServiceImpl implements TestService {
 		return commonDao.selectObjMap("select * from testredis where phone_no=:phoneNo", 
         		DaoOptions.builder()
         		.dataSourceName("mydata")
-        		.addParam("phoneNo", phoneNo)
+        		.eq("phoneNo", phoneNo)
         		.build());
 	}
 
@@ -88,12 +88,12 @@ public class TestServiceImpl implements TestService {
 		newObj.put("phone_no", uniquePhone);
 		
 		log.info("Testing saveObjSingle...");
-		commonDao.saveObjSingle(newObj, tableType, DaoConst.defaultDataSourceName, true);
+		commonDao.saveObj(newObj, tableType, DaoConst.defaultDataSourceName, true);
 		log.info("saveObjSingle success");
 		
 		// Verify save
 		Map<String, Object> savedObj = commonDao.selectObjSingle("select * from " + tableName + " where phone_no = :phoneNo", 
-				Map.class, DaoOptions.builder().addParam("phoneNo", uniquePhone).build());
+				Map.class, DaoOptions.builder().eq("phoneNo", uniquePhone).build());
 		if(savedObj == null) log.error("saveObjSingle failed verification!");
 		else log.info("Verified saved object: {}", savedObj);
 
@@ -114,12 +114,12 @@ public class TestServiceImpl implements TestService {
 			
 			if(savedObj.containsKey("id")) {
 				log.info("Table has ID, testing updateSingle with ID...");
-				commonDao.updateSingle(savedObj, new String[]{"id"}, tableType, DaoConst.defaultDataSourceName, true);
+				commonDao.updateObj(savedObj, new String[]{"id"}, tableType, DaoConst.defaultDataSourceName, true);
 				log.info("updateSingle success");
 				
 				// Verify update
 				Map<String, Object> updatedObj = commonDao.selectObjSingle("select * from " + tableName + " where id = :id", 
-						Map.class, DaoOptions.builder().addParam("id", savedObj.get("id")).build());
+						Map.class, DaoOptions.builder().eq("id", savedObj.get("id")).build());
 				if(updatedObj != null && updatedPhone.equals(updatedObj.get("phone_no"))) {
 					log.info("Verified update object: {}", updatedObj);
 				} else {
@@ -144,16 +144,16 @@ public class TestServiceImpl implements TestService {
 		log.info("5. Testing Delete Operations...");
 		// Use the object we created
 		Map<String, Object> objToDelete = commonDao.selectObjSingle("select * from " + tableName + " where phone_no like :phoneNo", 
-				Map.class, DaoOptions.builder().addParam("phoneNo", uniquePhone + "%").build());
+				Map.class, DaoOptions.builder().like("phoneNo", uniquePhone + "%").build());
 		
 		if(objToDelete != null && objToDelete.containsKey("id")) {
 			log.info("Testing deleteObjSingle...");
-			commonDao.deleteObjSingle(objToDelete, tableType, DaoConst.defaultDataSourceName, true);
+			commonDao.deleteObj(objToDelete, tableType, DaoConst.defaultDataSourceName, true);
 			log.info("deleteObjSingle success");
 			
 			// Verify delete
 			Map<String, Object> deletedObj = commonDao.selectObjSingle("select * from " + tableName + " where id = :id", 
-					Map.class, DaoOptions.builder().addParam("id", objToDelete.get("id")).build());
+					Map.class, DaoOptions.builder().eq("id", objToDelete.get("id")).build());
 			if(deletedObj == null) {
 				log.info("Verified delete object: success");
 			} else {

@@ -49,7 +49,7 @@ public class DaoOptions {
 	 * 当发生异常或错误时默认执行结果返回String错误消息，查询结果默认返回null，
 	 * 若传入异常或错误则commonDao将错误消息封装，抛出RuntimeException。
 	 */
-	private boolean runtimeException = true;
+	private boolean runtimeException = false;
 
 	/**
 	 * CommonDao查询方法，查询方式设置。
@@ -153,8 +153,8 @@ public class DaoOptions {
 				case QueryCondition qc -> queryConditions.add(qc);
 				case QueryCondition[] qcs -> queryConditions.addAll(Arrays.asList(qcs));
 				case TableType table -> this.tableType = table;
-				case DaoEnumOptions option when option == DaoEnumOptions.MsgException ->
-					this.runtimeException = false;
+				case DaoEnumOptions option when option == DaoEnumOptions.RuntimeException ->
+					this.runtimeException = true;
 				case DaoOptions options -> {
 					// Merge properties from another DaoOptions instance
 					if (options.dataSourceName != null

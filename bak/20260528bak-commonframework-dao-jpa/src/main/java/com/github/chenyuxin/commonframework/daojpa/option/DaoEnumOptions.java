@@ -7,11 +7,10 @@ package com.github.chenyuxin.commonframework.daojpa.option;
 public enum DaoEnumOptions {
 	
 	/**
-	 * 不配置此项，
-	 * 默认commonDao在执行出错时抛出RuntimeException异常，
-	 * 配置此项返回失败消息或空值。
+	 * commonDao在执行出错时抛出RuntimeException异常，
+	 * 不配置此项，默认返回失败消息或空值。
 	 */
-	MsgException,
+	RuntimeException,
 	
 	
 	;

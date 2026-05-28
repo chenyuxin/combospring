@@ -28,7 +28,7 @@ public class DaoOptionsTest {
         Map<String, Object> map = new HashMap<>();
         map.put("k1", "v1");
 
-        DaoOptions options = new DaoOptions("ds2", map, DaoEnumOptions.MsgException);
+        DaoOptions options = new DaoOptions("ds2", map, DaoEnumOptions.RuntimeException);
 
         assertEquals("ds2", options.getDataSourceName());
         assertEquals("v1", options.getParamMap().get("k1"));
@@ -58,7 +58,7 @@ public class DaoOptionsTest {
 
     @Test
     public void testRecursiveArray() {
-        DaoOptions options = new DaoOptions(new Object[] { "ds3", DaoEnumOptions.MsgException });
+        DaoOptions options = new DaoOptions(new Object[] { "ds3", DaoEnumOptions.RuntimeException });
         assertEquals("ds3", options.getDataSourceName());
         assertTrue(options.isThrowException());
     }

@@ -9,6 +9,7 @@ import org.springframework.boot.jdbc.autoconfigure.DataSourceProperties;
 
 import java.util.List;
 
+@SuppressWarnings("serial")
 @ConfigurationProperties("spring.datasource.druid")
 public class DruidDataSourceWrapper extends DruidDataSource implements InitializingBean {
     @Autowired
