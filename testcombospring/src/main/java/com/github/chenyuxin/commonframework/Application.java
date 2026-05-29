@@ -1,4 +1,4 @@
-package com.github.chenyuxin.commonframework.testredis;
+package com.github.chenyuxin.commonframework;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

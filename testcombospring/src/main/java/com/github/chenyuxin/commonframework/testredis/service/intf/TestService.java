@@ -24,6 +24,6 @@ public interface TestService {
 	/**
 	 * 验证CommonDao所有方法
 	 */
-	void verifyCommonDao();
+	//void verifyCommonDao();
 
 }
