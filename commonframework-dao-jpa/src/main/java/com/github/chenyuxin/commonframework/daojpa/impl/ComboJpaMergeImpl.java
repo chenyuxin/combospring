@@ -7,19 +7,24 @@ import com.github.chenyuxin.commonframework.daojpa.config.DaoResource;
 import com.github.chenyuxin.commonframework.daojpa.intf.ComboJpa;
 import com.github.chenyuxin.commonframework.daojpa.jparun.JpaRunner;
 
-@Service
-public class ComboJpaImpl implements ComboJpa {
+import jakarta.persistence.EntityManager;
+
+@Service("merge")
+public class ComboJpaMergeImpl implements ComboJpa {
 	
 	private DaoResource daoResource;
 	
-	public ComboJpaImpl(DaoResource daoResource) {
+	public ComboJpaMergeImpl(DaoResource daoResource) {
 		this.daoResource = daoResource;
 	}
 
 	@Transactional
 	@Override
 	public <T> T run(JpaRunner jpaRunner) {
-		return jpaRunner.getJpaRunType().run(daoResource, jpaRunner);
+		EntityManager entityManager = daoResource.moreEntityManager(jpaRunner.getDataSourceName());
+		@SuppressWarnings("unchecked")
+		T entity = (T) jpaRunner.getEntity();
+		return entityManager.merge(entity);
 	}
 
 }
