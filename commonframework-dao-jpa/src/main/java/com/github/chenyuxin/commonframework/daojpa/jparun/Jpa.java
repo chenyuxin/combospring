@@ -13,7 +13,6 @@ import com.github.chenyuxin.commonframework.daojpa.intf.ComboJpa;
 @Component
 public class Jpa {
 	
-	
 	private static ApplicationContext applicationContext;
 	
 	public Jpa(ApplicationContext applicationContext) {

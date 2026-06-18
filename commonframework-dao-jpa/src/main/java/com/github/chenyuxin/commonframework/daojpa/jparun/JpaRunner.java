@@ -64,7 +64,7 @@ public class JpaRunner {
 		return dataSourceName;
 	}
 
-	public JpaRunner setDataSourceName(String dataSourceName) {
+	public JpaRunner useDataSource(String dataSourceName) {
 		this.dataSourceName = dataSourceName;
 		return this;
 	}

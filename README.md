@@ -35,7 +35,7 @@
 ## 技术栈分析
 *   **核心语言**: Java (项目配置使用了较新的 Java 25)
 *   **构建工具**: Maven
-*   **核心框架**: Spring Boot (项目配置为 4.0.6 版本)
+*   **核心框架**: Spring Boot (项目配置为 4.1.0 版本)
 *   **JSON 处理**: Alibaba Fastjson2
 *   **数据库/持久化**: MySQL, PostgreSQL, Oracle, Spring Data JDBC/JPA, Druid
 *   **缓存**: Redis
