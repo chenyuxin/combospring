@@ -6,7 +6,7 @@
   <parent>
 	<groupId>org.springframework.boot</groupId> 
     <artifactId>spring-boot-starter-parent</artifactId> 
-    <version>4.0.1</version> 
+    <version>4.1.0</version> 
   </parent>
 	
   <groupId>com.github.chenyuxin.commonframework.testcombspring</groupId>		
@@ -19,11 +19,11 @@
   <description>测试项目。</description>
   
   <properties>
-    <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
-    <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+    <maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
+    <maven-war-plugin.version>3.5.1</maven-war-plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>25</java.version>
-    <spring-boot.version>4.0.1</spring-boot.version>
+    <spring-boot.version>4.1.0</spring-boot.version>
     
   </properties>
   
@@ -52,6 +52,33 @@
 		<groupId>org.apache.tomcat.embed</groupId>
 		<artifactId>tomcat-embed-jasper</artifactId>
 	</dependency>
+	
+	<!-- 测试 日志 和 lombok -->
+	<dependency>
+		<groupId>org.junit.jupiter</groupId>
+		<artifactId>junit-jupiter-api</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.junit.jupiter</groupId>
+		<artifactId>junit-jupiter-engine</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.junit.platform</groupId>
+		<artifactId>junit-platform-launcher</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.projectlombok</groupId>
+	    <artifactId>lombok</artifactId>
+	    <scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>	
+		<artifactId>slf4j-api</artifactId>
+	</dependency>
+	
 	
 	<dependency>
 		<groupId>com.github.chenyuxin.commonframework</groupId>

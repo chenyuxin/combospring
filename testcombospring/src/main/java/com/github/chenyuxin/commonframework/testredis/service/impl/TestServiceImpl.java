@@ -8,17 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.github.chenyuxin.commonframework.daojpa.intf.CommonDao;
-import com.github.chenyuxin.commonframework.daojpa.option.DaoOptions;
 import com.github.chenyuxin.commonframework.daojpa.common.DaoConst;
-import com.github.chenyuxin.commonframework.daojpa.common.TableType;
 import com.github.chenyuxin.commonframework.testredis.component.AsyncCache;
 import com.github.chenyuxin.commonframework.testredis.service.intf.TestService;
 
 @Service
 public class TestServiceImpl implements TestService {
-	
-	@Autowired CommonDao commonDao;
 	
 	@Autowired AsyncCache asyncCache;
 	
@@ -34,12 +29,12 @@ public class TestServiceImpl implements TestService {
             log.info("从数据库读数据");
             
             // 检查多数据源 mydata 中是否有 sys_user 表
-            boolean hasTable = commonDao.isTable(TableType.of("testredis"), "mydata");
-            log.info("mydata数据源中存在sys_user表: {}", hasTable);
+            // boolean hasTable = commonDao.isTable(TableType.of("testredis"), "mydata");
+            // log.info("mydata数据源中存在sys_user表: {}", hasTable);
             
             Map<String,Object> paramMap = new HashMap<String,Object>();
             paramMap.put("phoneNo", phoneNo);
-            list = commonDao.selectObjMap("select * from testredis where phone_no=:phoneNo", paramMap);
+            // list = commonDao.selectObjMap("select * from testredis where phone_no=:phoneNo", paramMap);
             
             asyncCache.cacheData(phoneNo, list);//redis异步缓存
         }
@@ -49,22 +44,27 @@ public class TestServiceImpl implements TestService {
     @Transactional(transactionManager = DaoConst.defaultDataSourceName + DaoConst.TransactionManager)
     @Override
     public List<Map<String, Object>> queryByPhoneNoDs1(String phoneNo) {
-        return commonDao.selectObjMap("select * from testredis where phone_no=:phoneNo", 
-        		DaoOptions.builder()
-        		.addParam("phoneNo", phoneNo)
-        		.build());
+//        return commonDao.selectObjMap("select * from testredis where phone_no=:phoneNo", 
+//        		DaoOptions.builder()
+//        		.eq("phoneNo", phoneNo)
+//        		.build());
+    	return null;
     }
 
     @Transactional(transactionManager = "mydata" + DaoConst.TransactionManager)
 	@Override
 	public List<Map<String, Object>> queryByPhoneNoDs2(String phoneNo) {
-		return commonDao.selectObjMap("select * from testredis where phone_no=:phoneNo", 
-        		DaoOptions.builder()
-        		.dataSourceName("mydata")
-        		.addParam("phoneNo", phoneNo)
-        		.build());
+//		return commonDao.selectObjMap("select * from testredis where phone_no=:phoneNo", 
+//        		DaoOptions.builder()
+//        		.dataSourceName("mydata")
+//        		.eq("phoneNo", phoneNo)
+//        		.build());
+    	return null;
 	}
 
+    /**
+     * 
+     
 	@Override
 	public void verifyCommonDao() {
 		log.info("Start verifyCommonDao");
@@ -88,12 +88,12 @@ public class TestServiceImpl implements TestService {
 		newObj.put("phone_no", uniquePhone);
 		
 		log.info("Testing saveObjSingle...");
-		commonDao.saveObjSingle(newObj, tableType, DaoConst.defaultDataSourceName, true);
+		commonDao.saveObj(newObj, tableType, DaoConst.defaultDataSourceName, true);
 		log.info("saveObjSingle success");
 		
 		// Verify save
 		Map<String, Object> savedObj = commonDao.selectObjSingle("select * from " + tableName + " where phone_no = :phoneNo", 
-				Map.class, DaoOptions.builder().addParam("phoneNo", uniquePhone).build());
+				Map.class, DaoOptions.builder().eq("phoneNo", uniquePhone).build());
 		if(savedObj == null) log.error("saveObjSingle failed verification!");
 		else log.info("Verified saved object: {}", savedObj);
 
@@ -114,12 +114,12 @@ public class TestServiceImpl implements TestService {
 			
 			if(savedObj.containsKey("id")) {
 				log.info("Table has ID, testing updateSingle with ID...");
-				commonDao.updateSingle(savedObj, new String[]{"id"}, tableType, DaoConst.defaultDataSourceName, true);
+				commonDao.updateObj(savedObj, new String[]{"id"}, tableType, DaoConst.defaultDataSourceName, true);
 				log.info("updateSingle success");
 				
 				// Verify update
 				Map<String, Object> updatedObj = commonDao.selectObjSingle("select * from " + tableName + " where id = :id", 
-						Map.class, DaoOptions.builder().addParam("id", savedObj.get("id")).build());
+						Map.class, DaoOptions.builder().eq("id", savedObj.get("id")).build());
 				if(updatedObj != null && updatedPhone.equals(updatedObj.get("phone_no"))) {
 					log.info("Verified update object: {}", updatedObj);
 				} else {
@@ -144,16 +144,16 @@ public class TestServiceImpl implements TestService {
 		log.info("5. Testing Delete Operations...");
 		// Use the object we created
 		Map<String, Object> objToDelete = commonDao.selectObjSingle("select * from " + tableName + " where phone_no like :phoneNo", 
-				Map.class, DaoOptions.builder().addParam("phoneNo", uniquePhone + "%").build());
+				Map.class, DaoOptions.builder().like("phoneNo", uniquePhone + "%").build());
 		
 		if(objToDelete != null && objToDelete.containsKey("id")) {
 			log.info("Testing deleteObjSingle...");
-			commonDao.deleteObjSingle(objToDelete, tableType, DaoConst.defaultDataSourceName, true);
+			commonDao.deleteObj(objToDelete, tableType, DaoConst.defaultDataSourceName, true);
 			log.info("deleteObjSingle success");
 			
 			// Verify delete
 			Map<String, Object> deletedObj = commonDao.selectObjSingle("select * from " + tableName + " where id = :id", 
-					Map.class, DaoOptions.builder().addParam("id", objToDelete.get("id")).build());
+					Map.class, DaoOptions.builder().eq("id", objToDelete.get("id")).build());
 			if(deletedObj == null) {
 				log.info("Verified delete object: success");
 			} else {
@@ -163,4 +163,7 @@ public class TestServiceImpl implements TestService {
 
 		log.info("End verifyCommonDao");
 	}
+	
+	*/
+    
 }

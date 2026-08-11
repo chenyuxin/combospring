@@ -3,7 +3,6 @@ package com.github.chenyuxin.commonframework.testredis.rest;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.impl.Slf4jLogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;

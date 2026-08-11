@@ -24,7 +24,7 @@ public class DaoUtil {
 	 * @param rows 作用行数
 	 * @return
 	 */
-	public static final String daoMessage(String daoMessageString,Integer rows) {
+	public static final String daoMessage(String daoMessageString, Integer rows) {
 		return null==rows ? daoMessageString : daoMessageString+" rows:["+rows+"]";
 	}
 	
@@ -34,7 +34,7 @@ public class DaoUtil {
 	 * @param smallCamel 大小驼峰,是否为小驼峰
 	 * @return 转换后的字符串
 	 */
-	public static String underlineToCamel(String line,boolean smallCamel){
+	public static String underlineToCamel(String line, boolean smallCamel){
 		if(line==null||StringPool.BLANK.equals(line)){
 			return StringPool.BLANK;
 		}

@@ -29,10 +29,13 @@ public class DaoResource {
 	@Autowired
 	@Qualifier("NamedParameterJdbcTemplate")
 	private NamedParameterJdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private jakarta.persistence.EntityManager entityManager;
 
 	@Autowired
 	private ApplicationContext applicationContext;
-
+	
 	/**
 	 * 数据源缓存
 	 */
@@ -62,9 +65,6 @@ public class DaoResource {
 	 * 实体管理器缓存
 	 */
 	private final static Map<String, jakarta.persistence.EntityManager> cacheEntityManagers = new ConcurrentHashMap<>();
-
-	@Autowired
-	private jakarta.persistence.EntityManager entityManager;
 
 	/**
 	 * 使用自定义数据源的EntityManager
