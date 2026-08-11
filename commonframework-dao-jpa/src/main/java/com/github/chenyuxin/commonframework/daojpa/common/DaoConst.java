@@ -43,6 +43,11 @@ public interface DaoConst {
 	public static final String EntityManagerFactory = "EntityManagerFactory";
 
 	/**
+	 * comboJpa 的service服务名后缀
+	 */
+	public static final String JPA_RUNNER_SUFFIX = "JpaRunner";
+
+	/**
 	 * 下划线转驼峰正则
 	 */
 	public static final String underlineToCamelRegex = "([A-Za-z\\d]+)(_)?";

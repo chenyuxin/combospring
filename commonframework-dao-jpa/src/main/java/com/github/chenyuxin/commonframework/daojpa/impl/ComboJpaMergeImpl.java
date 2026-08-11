@@ -3,13 +3,14 @@ package com.github.chenyuxin.commonframework.daojpa.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.github.chenyuxin.commonframework.daojpa.common.DaoConst;
 import com.github.chenyuxin.commonframework.daojpa.config.DaoResource;
 import com.github.chenyuxin.commonframework.daojpa.intf.ComboJpa;
 import com.github.chenyuxin.commonframework.daojpa.jparun.JpaRunner;
 
 import jakarta.persistence.EntityManager;
 
-@Service("merge")
+@Service("merge" + DaoConst.JPA_RUNNER_SUFFIX)
 public class ComboJpaMergeImpl implements ComboJpa {
 	
 	private DaoResource daoResource;

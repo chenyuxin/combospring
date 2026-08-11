@@ -7,13 +7,14 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.github.chenyuxin.commonframework.daojpa.common.DaoConst;
 import com.github.chenyuxin.commonframework.daojpa.config.DaoResource;
 import com.github.chenyuxin.commonframework.daojpa.intf.ComboJpa;
 import com.github.chenyuxin.commonframework.daojpa.jparun.JpaRunner;
 
 import jakarta.persistence.EntityManager;
 
-@Service("mergeAll")
+@Service("mergeAll" + DaoConst.JPA_RUNNER_SUFFIX)
 public class ComboJpaMergeAllImpl implements ComboJpa {
 	
 	private DaoResource daoResource;

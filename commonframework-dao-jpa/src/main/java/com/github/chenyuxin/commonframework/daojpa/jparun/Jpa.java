@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.github.chenyuxin.commonframework.daojpa.common.DaoConst;
 import com.github.chenyuxin.commonframework.daojpa.intf.ComboJpa;
 
 /**
@@ -46,7 +47,7 @@ public class Jpa {
 	 * @return
 	 */
 	protected static <T> T run(JpaRunner jpaRunner) {
-		ComboJpa comboJpa = (ComboJpa) applicationContext.getBean(jpaRunner.getJpaRunType().name());
+		ComboJpa comboJpa = (ComboJpa) applicationContext.getBean(jpaRunner.getJpaRunType().name() + DaoConst.JPA_RUNNER_SUFFIX);
 		return comboJpa.run(jpaRunner);
 	}
 

@@ -10,7 +10,7 @@ import com.github.chenyuxin.commonframework.daojpa.jparun.JpaRunner;
 
 import jakarta.persistence.EntityManager;
 
-@Service("remove")
+@Service("remove" + DaoConst.JPA_RUNNER_SUFFIX)
 public class ComboJpaRemoveImpl implements ComboJpa {
 	
 	private DaoResource daoResource;
